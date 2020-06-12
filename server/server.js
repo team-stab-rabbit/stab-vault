@@ -1,8 +1,13 @@
 const express = require('express');
+// const color = require('color');
+
 const app = express();
-const color = require('color');
 
 const PORT = process.env.PORT || 5000;
+
+app.get('/api', (req, res) => {
+  res.status(200).send('api is running');
+});
 
 app.get('/', (req, res) => {
   res.status(200).send('works');

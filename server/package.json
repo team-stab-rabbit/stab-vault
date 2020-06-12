@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon server.js",
-    "react": "cd ../client && npm run start",
+    "react": "cd ../client && npm run react",
     "start": "concurrently \"npm run server\" \"npm run react\""
   },
   "keywords": [],
@@ -18,8 +18,8 @@
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.21.1"
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2"
   }
 }
