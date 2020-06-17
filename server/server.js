@@ -1,18 +1,52 @@
+const path = require('path');
+
 const express = require('express');
-// const color = require('color');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+
+const userController = require('./controllers/user');
+const verifyToken = require('./utils/verifyToken');
 
 const app = express();
-
 const PORT = process.env.PORT || 5000;
 
-app.get('/api', (req, res) => {
-  res.status(200).send('api is running');
+// ------
+// Routes
+// ------
+
+app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use(express.json({ extended: false }));
+app.use(cookieParser());
+
+app.post('/api/register', userController.registerUser);
+app.post('/api/login', userController.loginUser);
+// Used to check if the users token is valid
+// Allows us to protect routes on the client side
+app.get('/api/checkToken', [verifyToken], (req, res) => {
+  res.sendStatus(200);
 });
 
-app.get('/', (req, res) => {
-  res.status(200).send('works');
+// Let React handle all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at port ${PORT}`);
+// -------------
+// Connect to DB
+// Then start server
+// -----------------
+
+mongoose.connect('mongodb://localhost/learnVault', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`Server running at port ${PORT}`);
+  });
 });
