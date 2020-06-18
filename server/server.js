@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
 // Then start server
 // -----------------
 
-mongoose.connect('mongodb+srv://mongo-rob_25:4V24PfCgnI8CiaMS@mernproject1-r5mds.mongodb.net/scratchproject?retryWrites=true&w=majority', {
+mongoose.connect('', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
