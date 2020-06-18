@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { useHistory } from 'react-router-dom';
 
 import './Register.css';
@@ -223,10 +223,6 @@ const register = ({ setLoggedIn }) => {
       </form>
     </div>
   );
-};
-
-register.propTypes = {
-  setLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default register;

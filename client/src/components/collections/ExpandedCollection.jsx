@@ -11,20 +11,15 @@ const ExpandedCollection = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    async function getOneCollection() {
-      await fetch(`/api/collections/${id}`)
-        .then((res) => res.json())
-        .then((result) => {
-          setCollection(result);
-          console.log('collection===', result);
-        });
-    }
-
-    getOneCollection();
+    fetch(`/api/collections/${id}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setCollection(result);
+      });
   }, []);
 
   function likeButtonClick(eventId) {
-    console.log(eventId);
+    console.log('ID of collection that was liked == ', eventId);
   }
 
   return (

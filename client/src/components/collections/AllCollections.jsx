@@ -6,16 +6,12 @@ const AllCollections = () => {
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    async function getCollections() {
-      await fetch('/api/collections')
-        .then((res) => res.json())
-        .then((result) => {
-          setCollections(result);
-          console.log('collections===', result);
-        });
-    }
-
-    getCollections();
+    fetch('/api/collections')
+      .then((res) => res.json())
+      .then((result) => {
+        setCollections(result);
+        console.log('collections===', result);
+      });
   }, []);
 
   return (

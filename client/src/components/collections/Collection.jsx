@@ -5,7 +5,7 @@ const Collection = ({
   id, title, description, author,
 }) => {
   function likeButtonClick(eventId) {
-    console.log(eventId);
+    console.log('ID of collection that was liked == ', eventId);
   }
 
   return (
