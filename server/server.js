@@ -26,6 +26,9 @@ app.get('/api/checkToken', [verifyToken], (req, res) => {
   res.sendStatus(200);
 });
 
+// Collection routes
+app.use('/api/collections', require('./routes/api/collections'));
+
 // Let React handle all other routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
@@ -36,7 +39,7 @@ app.get('*', (req, res) => {
 // Then start server
 // -----------------
 
-mongoose.connect('mongodb://localhost/learnVault', {
+mongoose.connect('', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

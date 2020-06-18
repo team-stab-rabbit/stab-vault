@@ -20,6 +20,9 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
           <li className="nav__item">
             <Link to="/" className="nav__link">Home</Link>
           </li>
+          <li className="nav__item">
+            <Link to="/collections" className="nav__link">Collections</Link>
+          </li>
           {!loggedIn && (
             <>
               <li className="nav__item">
@@ -35,6 +38,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
               <li className="nav__item">
                 <Link to="/profile" className="nav__link">Profile</Link>
               </li>
+
               <li className="nav__item">
                 <button type="button" className="nav__link" onClick={logout}>Logout</button>
               </li>
