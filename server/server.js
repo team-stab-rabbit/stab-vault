@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
 // Then start server
 // -----------------
 
-mongoose.connect('', {
+mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
