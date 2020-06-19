@@ -23,7 +23,6 @@ const App = () => {
 
   return (
     <Router>
-      { loggedInUser }
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <main>
         <Switch>
