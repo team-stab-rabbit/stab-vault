@@ -1,9 +1,5 @@
-import React, {
-  useState, useEffect,
-} from 'react';
-import {
-  useParams,
-} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
 const ExpandedCollection = () => {
   const [collection, setCollection] = useState([]);
@@ -42,7 +38,7 @@ const ExpandedCollection = () => {
         Creator:
         {' '}
         {' '}
-        {collection.author}
+        <Link to={`/collections/user/${collection.author}`}>{collection.author}</Link>
         {' '}
         {' '}
       </p>
