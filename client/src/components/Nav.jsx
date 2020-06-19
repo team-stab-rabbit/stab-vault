@@ -3,13 +3,13 @@ import { Link, useHistory } from 'react-router-dom';
 
 import './Nav.css';
 
-const Nav = ({ loggedIn, setLoggedIn }) => {
+const Nav = ({ loggedInUser, setLoggedInUser }) => {
   const history = useHistory();
 
   const logout = () => {
     console.log('logging out');
     // TODO: clear token cookie
-    setLoggedIn(false);
+    setLoggedInUser('');
     history.push('/');
   };
 
@@ -23,7 +23,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
           <li className="nav__item">
             <Link to="/collections" className="nav__link">Collections</Link>
           </li>
-          {!loggedIn && (
+          {!loggedInUser && (
             <>
               <li className="nav__item">
                 <Link to="/login" className="nav__link">Login</Link>
@@ -33,7 +33,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
               </li>
             </>
           )}
-          {loggedIn && (
+          {loggedInUser && (
             <>
               <li className="nav__item">
                 <Link to="/profile" className="nav__link">Profile</Link>
