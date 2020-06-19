@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import './Register.css';
 
-const register = ({ setLoggedIn }) => {
+const register = ({ setLoggedInUser }) => {
   const history = useHistory();
 
   // -----------
@@ -149,7 +149,7 @@ const register = ({ setLoggedIn }) => {
 
     if (data.registrationSuccessful) {
       // TODO: show successful registration message
-      setLoggedIn(true);
+      setLoggedInUser(data.userId);
       history.push('/');
     }
   };

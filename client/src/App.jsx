@@ -19,20 +19,20 @@ import ExpandedCollection from './components/collections/ExpandedCollection';
 import './App.css';
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(false);
 
   return (
     <Router>
-      <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <main>
         <Switch>
 
           <Route path="/register">
-            <Register setLoggedIn={setLoggedIn} />
+            <Register setLoggedInUser={setLoggedInUser} />
           </Route>
 
           <Route path="/login">
-            <Login setLoggedIn={setLoggedIn} />
+            <Login setLoggedInUser={setLoggedInUser} />
           </Route>
 
           <Route path="/profile">

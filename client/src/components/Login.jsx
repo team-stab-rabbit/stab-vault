@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState('wayrse@gmail.com');
   const [password, setPassword] = useState('123');
   const history = useHistory();
@@ -22,7 +22,7 @@ const Login = ({ setLoggedIn }) => {
       .then((data) => {
         // If login was successful, redirect to homepage
         if (data.attempt === 'success') {
-          setLoggedIn(true);
+          setLoggedInUser(data.userId);
           history.push('/');
         }
       })
