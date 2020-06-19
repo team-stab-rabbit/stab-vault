@@ -43,9 +43,10 @@ exports.loginUser = (req, res) => {
       }
 
       // If everything went well, issue a token
-      const payload = { email };
+      const { _id: userId } = user;
+      const payload = { userId };
       const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-      return res.cookie('token', token, { httpOnly: true }).send({ attempt: 'success'});
+      return res.cookie('token', token, { httpOnly: true }).send({ attempt: 'success', userId });
     });
   });
 };
@@ -90,9 +91,10 @@ exports.registerUser = async (req, res) => {
     .then((result) => {
       console.log('User added to the DB!');
 
-      const payload = { email: result.email };
+      const { _id: userId } = result;
+      const payload = { userId };
       const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-      return res.cookie('token', token, { httpOnly: true }).send({ registrationSuccessful: true });
+      return res.cookie('token', token, { httpOnly: true }).send({ registrationSuccessful: true, userId });
     })
     .catch((err) => {
       console.log('Error when saving user to DB: ', err);
