@@ -41,15 +41,15 @@ const App = () => {
           </Route>
 
           <Route path="/collections/user/:userId">
-            <AllCollections userCollections />
+            <AllCollections userCollections loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/collections/:id">
-            <ExpandedCollection />
+            <ExpandedCollection loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/collections">
-            <AllCollections />
+            <AllCollections loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/" exact>

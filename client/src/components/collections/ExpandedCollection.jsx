@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-const ExpandedCollection = () => {
+import LikeButton from './LikeButton';
+import SaveButton from './SaveButton';
+
+const ExpandedCollection = ({ loggedInUser }) => {
   const [collection, setCollection] = useState([]);
 
   const { id } = useParams();
@@ -13,10 +16,6 @@ const ExpandedCollection = () => {
         setCollection(result);
       });
   }, []);
-
-  function likeButtonClick(eventId) {
-    console.log('ID of collection that was liked == ', eventId);
-  }
 
   return (
 
@@ -44,7 +43,8 @@ const ExpandedCollection = () => {
       </p>
 
       <div>
-        <button type="button" onClick={() => likeButtonClick(collection._id)}>Like</button>
+        <LikeButton loggedInUser={loggedInUser} id={id} />
+        <SaveButton loggedInUser={loggedInUser} id={id} />
       </div>
     </div>
 

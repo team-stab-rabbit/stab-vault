@@ -259,14 +259,14 @@ router.delete('/:id', async (req, res) => {
 // @access  Private
 
 router.put('/like/:id', async (req, res) => {
-  const collection = Collection.findById(req.params.id);
+  const collection = await Collection.findById((req.body.collectionId));
 
   try {
-    if (collection.likes.filter((like) => like.user.toString() === req.user.name).length > 0) {
+    if (collection.likes.filter((like) => like === req.body.id).length > 0) {
       return res.status(400).json({ msg: 'You have already liked this collection' });
     }
 
-    collection.likes.push({ user: req.user.name });
+    collection.likes.push(req.body.id);
 
     await collection.save();
 
@@ -283,7 +283,7 @@ router.put('/like/:id', async (req, res) => {
 // @access  Private
 
 router.put('/unlike/:id', async (req, res) => {
-  const collection = Collection.findById(req.params.id);
+  const collection = await Collection.findById(req.params.id);
 
   try {
     if ((collection.likes.filter((like) => like.user === req.user.name)).length === 0) {
