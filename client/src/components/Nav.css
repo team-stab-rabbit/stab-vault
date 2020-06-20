@@ -1,8 +1,9 @@
 header {
-  background: lightgrey;
+  background: black;
   padding: 20px;
   margin-bottom: 40px;
   display: flex;
+  color: white;
 }
 
 .nav {
@@ -30,3 +31,4 @@ header {
   outline: none;
   cursor: pointer;
 }
+
