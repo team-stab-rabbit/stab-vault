@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
-import Landing from './components/Landing';
 import PageNotFound from './components/PageNotFound';
 import WithAuth from './components/WithAuth';
 
@@ -27,7 +22,6 @@ const App = () => {
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <main>
         <Switch>
-
           <Route path="/register">
             <Register setLoggedInUser={setLoggedInUser} />
           </Route>
@@ -53,18 +47,13 @@ const App = () => {
             <SavedCollections loggedInUser={loggedInUser} />
           </Route>
 
-          <Route path="/collections">
-            <AllCollections loggedInUser={loggedInUser} />
-          </Route>
-
           <Route path="/" exact>
-            <Landing />
+            <AllCollections loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/">
             <PageNotFound />
           </Route>
-
         </Switch>
       </main>
     </Router>
