@@ -1,15 +1,32 @@
 import React from 'react';
 
 const SaveButton = ({ id, loggedInUser }) => {
-  function saveButtonClick(eventId, userId) {
-    console.log('ID of collection that was saved == ', eventId);
-    console.log('ID of user that clicked saved == ', userId);
+  function likeButtonClick(eventId, userId) {
+    console.log('ID of collection that was liked == ', eventId);
+    console.log('ID of user that clicked like == ', userId);
+
+    const payload = { id: userId, collectionId: id };
+
+    fetch(`/api/collections/save/${id}`, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   return (
-    <button label="savebutton" onClick={() => saveButtonClick(id, loggedInUser)} type="button" className="save-button">
-      <i className="fa fa-star" />
-      &nbsp; Save Collection
+    <button label="likebutton" onClick={() => likeButtonClick(id, loggedInUser)} type="button" className="like-button">
+      <i className="far fa-star" />
+    &nbsp; Save Collection
     </button>
   );
 };

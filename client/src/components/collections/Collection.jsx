@@ -33,10 +33,21 @@ const Collection = ({
     <div>
       <Link to={`/collections/${id}`}>View Collection</Link>
     </div>
-    <div>
-      <LikeButton loggedInUser={loggedInUser} id={id} />
-      <SaveButton loggedInUser={loggedInUser} id={id} />
-    </div>
+    {loggedInUser ? (
+      <div>
+        <br />
+        <LikeButton loggedInUser={loggedInUser} id={id} />
+        <SaveButton loggedInUser={loggedInUser} id={id} />
+      </div>
+    ) : (
+      <div>
+        <br />
+        <Link to="/register">Register</Link>
+          &nbsp;or&nbsp;
+        <Link to="/login">Login</Link>
+          &nbsp;to save this collection
+      </div>
+    )}
   </div>
 
 );

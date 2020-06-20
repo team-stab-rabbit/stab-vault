@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const Collection = require('../../models/Collection');
+const User = require('../../models/user');
 
 /* ================== Collection Schema ==================
   author: {},       // The creator of the collection - references user table
@@ -25,6 +26,9 @@ GET '/api/collections'  - Get all collections in database - sorted by date
 POST '/api/collections'  - Create a new collection
 GET '/api/collections/:id' - Get a collection by ID
 PUT '/api/collections/:id' - Edit or update a collection
+
+// PUT - 'api/collections/save/:id' - Save a collection
+
 DELETE - '/api/collections/:id' - Delete a collection
 PUT - 'api/collections/like/:id' - Like a collection
 PUT - 'api/collections/unlike/:id' - Unlike a collection
@@ -299,6 +303,51 @@ router.put('/unlike/:id', async (req, res) => {
     await collection.save();
 
     return res.send(collection.likes);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('Server Error');
+  }
+});
+
+// PUT - 'api/collections/save/:id' - Save a collection
+// @route   PUT api/collections/:id
+// @desc    Save a collection by ID
+// @access  Private
+
+router.put('/save/:id', async (req, res) => {
+  const user = await User.findById((req.body.id));
+
+  try {
+    if (user.savedcollections.filter((col) => col === req.body.collectionId).length > 0) {
+      return res.status(400).json({ msg: 'You have already saved this collection' });
+    }
+
+    user.savedcollections.push(req.body.collectionId);
+
+    await user.save();
+
+    return res.send(user.savedcollections);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('Server Error');
+  }
+});
+
+// GET - 'api/collections/savedcollections' - Get saved collections
+// @route   GET api/collections/savedcollections
+// @desc    Get saved collections for logged in user
+// @access  Private
+
+router.get('/savedcollections/:userId', async (req, res) => {
+  // const collection = await Collection.findById((req.body.collectionId));
+  const user = await User.findById((req.params.userId));
+
+  try {
+    if (user.savedcollections.length === 0) {
+      return res.status(400).json({ msg: 'You have not saved any collections' });
+    }
+
+    return res.send(user.savedcollections);
   } catch (err) {
     console.error(err.message);
     return res.status(500).send('Server Error');

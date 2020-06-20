@@ -36,6 +36,9 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => {
           {loggedInUser && (
             <>
               <li className="nav__item">
+                <Link to="/savedcollections" className="nav__link">Saved Collections</Link>
+              </li>
+              <li className="nav__item">
                 <Link to="/profile" className="nav__link">Profile</Link>
               </li>
 

@@ -42,10 +42,20 @@ const ExpandedCollection = ({ loggedInUser }) => {
         {' '}
       </p>
 
-      <div>
-        <LikeButton loggedInUser={loggedInUser} id={id} />
-        <SaveButton loggedInUser={loggedInUser} id={id} />
-      </div>
+      {loggedInUser ? (
+        <div>
+          <br />
+          <LikeButton loggedInUser={loggedInUser} id={id} />
+          <SaveButton loggedInUser={loggedInUser} id={id} />
+        </div>
+      ) : (
+        <div>
+          <Link to="/register">Register</Link>
+          &nbsp;or&nbsp;
+          <Link to="/login">Login</Link>
+          &nbsp;to save this collection
+        </div>
+      )}
     </div>
 
   );

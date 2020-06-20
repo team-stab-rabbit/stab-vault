@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Collection from './Collection';
 
-const AllCollections = ({ userCollections }) => {
+const AllCollections = ({ loggedInUser, userCollections }) => {
   const [collections, setCollections] = useState([]);
   const { userId } = useParams();
 
@@ -43,6 +43,7 @@ const AllCollections = ({ userCollections }) => {
               title={collection.title}
               description={collection.description}
               author={collection.author}
+              loggedInUser={loggedInUser}
             />
 
           ))) : <li> Loading...</li>}
