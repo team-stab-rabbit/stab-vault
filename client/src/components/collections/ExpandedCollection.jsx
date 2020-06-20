@@ -41,6 +41,14 @@ const ExpandedCollection = ({ loggedInUser }) => {
         {' '}
         {' '}
       </p>
+      <p>
+        Collection Details:
+        {' '}
+        {' '}
+        {collection.text}
+        {' '}
+        {' '}
+      </p>
 
       {loggedInUser ? (
         <div>
