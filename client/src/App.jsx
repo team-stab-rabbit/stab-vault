@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import Login from './components/Login';
@@ -15,6 +11,7 @@ import WithAuth from './components/WithAuth';
 
 import AllCollections from './components/collections/AllCollections';
 import ExpandedCollection from './components/collections/ExpandedCollection';
+import AddCollection from './components/collections/AddCollection';
 
 import './App.css';
 
@@ -26,7 +23,6 @@ const App = () => {
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <main>
         <Switch>
-
           <Route path="/register">
             <Register setLoggedInUser={setLoggedInUser} />
           </Route>
@@ -38,6 +34,10 @@ const App = () => {
           <Route path="/profile">
             {/* To protect a route, simply wrap it with a WithAuth component */}
             <WithAuth Component={Profile} />
+          </Route>
+
+          <Route path="/add-collection">
+            <WithAuth Component={AddCollection} />
           </Route>
 
           <Route path="/collections/user/:userId">
@@ -59,7 +59,6 @@ const App = () => {
           <Route path="/">
             <PageNotFound />
           </Route>
-
         </Switch>
       </main>
     </Router>
