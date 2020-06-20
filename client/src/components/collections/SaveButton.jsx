@@ -2,13 +2,10 @@ import React from 'react';
 
 const SaveButton = ({ id, loggedInUser }) => {
   function likeButtonClick(eventId, userId) {
-    console.log('ID of collection that was liked == ', eventId);
-    console.log('ID of user that clicked like == ', userId);
-
     const payload = { id: userId, collectionId: id };
 
     fetch(`/api/collections/save/${id}`, {
-      method: 'PUT', // or 'PUT'
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

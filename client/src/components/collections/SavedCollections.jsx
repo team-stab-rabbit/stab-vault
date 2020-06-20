@@ -10,7 +10,7 @@ const SavedCollections = ({ loggedInUser }) => {
     // Get all collections for user
 
     fetch(`/api/collections/savedcollections/${loggedInUser}`, {
-      method: 'GET', // or 'PUT'
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
