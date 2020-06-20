@@ -11,8 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 process.env.DB =
-  'mongodb+srv://nadya:dTAY12DTXRK4HITj@learnvault-jvnek.mongodb.net/learnvault?retryWrites=true&w=majority';
-
+  
 // ------
 // Routes
 // ------
