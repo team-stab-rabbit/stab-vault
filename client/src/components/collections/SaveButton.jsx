@@ -21,7 +21,7 @@ const SaveButton = ({ id, loggedInUser }) => {
   }
 
   return (
-    <button label="likebutton" onClick={() => likeButtonClick(id, loggedInUser)} type="button" className="like-button">
+    <button onClick={() => likeButtonClick(id, loggedInUser)} type="button" className="button-like">
       <i className="far fa-star" />
     &nbsp; Save Collection
     </button>

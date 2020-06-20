@@ -1,0 +1,20 @@
+.collection {
+  border: 1px solid grey;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.collection__title {
+  margin-top: 0;
+}
+
+.collection__button {
+  border: 1px solid grey;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  background: dodgerblue;
+  color: white;
+}
