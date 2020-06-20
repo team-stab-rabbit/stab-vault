@@ -44,12 +44,12 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => {
                   Saved Collections
                 </Link>
               </li>
-              <li className="nav__item">
+              {/* Profile nav bar item not completed but functionality can be added */}
+              {/* <li className="nav__item">
                 <Link to="/profile" className="nav__link">
                   Profile
                 </Link>
-              </li>
-
+              </li> */}
               <li className="nav__item">
                 <button type="button" className="nav__link" onClick={logout}>
                   Logout

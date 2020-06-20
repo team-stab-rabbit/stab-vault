@@ -18,10 +18,10 @@ const Collection = ({
       {description}
     </h3>
 
-    <p>
-      Creator:
-      {author}
-    </p>
+    <div className="creator">
+      <div className="creator__label">Creator:</div>
+      <div className="creator__author">{author}</div>
+    </div>
     <div>
       <Link to={`/collections/${id}`} className="collection__button">View Collection</Link>
     </div>
