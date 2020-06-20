@@ -28,7 +28,7 @@ const Collection = ({
         Creator:
         {' '}
         {' '}
-        {author}
+        <Link to={`/collections/user/${author}`}>{author}</Link>
         {' '}
         {' '}
       </p>

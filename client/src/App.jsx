@@ -19,7 +19,7 @@ import ExpandedCollection from './components/collections/ExpandedCollection';
 import './App.css';
 
 const App = () => {
-  const [loggedInUser, setLoggedInUser] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState('');
 
   return (
     <Router>
@@ -38,6 +38,10 @@ const App = () => {
           <Route path="/profile">
             {/* To protect a route, simply wrap it with a WithAuth component */}
             <WithAuth Component={Profile} />
+          </Route>
+
+          <Route path="/collections/user/:userId">
+            <AllCollections userCollections />
           </Route>
 
           <Route path="/collections/:id">

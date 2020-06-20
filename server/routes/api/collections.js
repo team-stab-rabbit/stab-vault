@@ -363,4 +363,21 @@ router.put('/tags/:id', async (req, res) => {
 // @desc    Update contributors on a collection
 // @access  Private
 
+// GET '/api/collections/user/:userId' - Get a collection by userId
+// @route   GET '/api/collections/user/:userId'
+// @desc    Get a collection by userI
+// @access  Public
+
+router.get('/user/:id', async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const collections = await Collection.find({ author: userId }).sort({ date: -1 });
+    res.json(collections);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
