@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
 import SaveButton from './SaveButton';
 
+import './Collection.css';
+
 const Collection = ({
   id, title, description, author, loggedInUser,
 }) => (
 
-  <div key={id} className="collection-div">
-    <h1>
+  <div key={id} className="collection">
+    <h1 className="collection__title">
       {title}
     </h1>
     <h3>
@@ -21,7 +23,7 @@ const Collection = ({
       {author}
     </p>
     <div>
-      <Link to={`/collections/${id}`}>View Collection</Link>
+      <Link to={`/collections/${id}`} className="collection__button">View Collection</Link>
     </div>
     {loggedInUser ? (
       <div>

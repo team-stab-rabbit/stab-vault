@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
+import './ExpandedCollection.css';
+
 import LikeButton from './LikeButton';
 import SaveButton from './SaveButton';
 
@@ -27,13 +29,22 @@ const ExpandedCollection = ({ loggedInUser }) => {
         {collection.description}
       </h3>
 
-      <p>
-        Creator:
-        {collection.author}
-      </p>
-      <p>
-        {collection.text}
-      </p>
+      <div className="creator">
+        <div className="creator__label">Creator:</div>
+        <div className="creator__author">{collection.author}</div>
+      </div>
+
+      {collection.links && (
+        <div className="links">
+          {collection.links.map(
+            (link) => (
+              <div className="links__item" key={link}>
+                <a href={link} target="_blank" rel="noreferrer">{link}</a>
+              </div>
+            ),
+          )}
+        </div>
+      )}
 
       {loggedInUser ? (
         <div>

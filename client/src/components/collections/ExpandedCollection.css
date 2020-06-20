@@ -1,0 +1,27 @@
+.creator {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.creator__label {
+  margin-right: 5px;
+}
+
+.creator__author {
+
+}
+
+.links {
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.links__item {
+  margin-top: 10px;
+}
+
+.links__item:first-child {
+  margin-top: 0;
+}
