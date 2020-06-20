@@ -10,25 +10,15 @@ const Collection = ({
 
   <div key={id} className="collection-div">
     <h1>
-      Title:
-      {' '}
-      {' '}
       {title}
     </h1>
     <h3>
-      Description:
-      {' '}
-      {' '}
       {description}
     </h3>
 
     <p>
       Creator:
-      {' '}
-      {' '}
-      <Link to={`/collections/user/${author}`}>{author}</Link>
-      {' '}
-      {' '}
+      {author}
     </p>
     <div>
       <Link to={`/collections/${id}`}>View Collection</Link>

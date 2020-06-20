@@ -21,33 +21,18 @@ const ExpandedCollection = ({ loggedInUser }) => {
 
     <div key={collection._id} className="collection-div">
       <h1>
-        Title:
-        {' '}
-        {' '}
         {collection.title}
       </h1>
       <h3>
-        Description:
-        {' '}
-        {' '}
         {collection.description}
       </h3>
 
       <p>
         Creator:
-        {' '}
-        {' '}
-        <Link to={`/collections/user/${collection.author}`}>{collection.author}</Link>
-        {' '}
-        {' '}
+        {collection.author}
       </p>
       <p>
-        Collection Details:
-        {' '}
-        {' '}
         {collection.text}
-        {' '}
-        {' '}
       </p>
 
       {loggedInUser ? (
