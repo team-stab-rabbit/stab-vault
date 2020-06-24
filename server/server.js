@@ -43,8 +43,6 @@ app.get('*', (req, res) => {
 // Then start server
 // -----------------
 
-console.log('process.env.DB ->', process.env.DB);
-
 mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
