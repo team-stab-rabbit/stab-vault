@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Collection from './Collection';
+import Collection from '../collection/collection.component';
 
 const AllCollections = ({ loggedInUser, userCollections }) => {
   const [collections, setCollections] = useState([]);

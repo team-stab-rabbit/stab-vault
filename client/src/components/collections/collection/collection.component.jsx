@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import LikeButton from './LikeButton';
-import SaveButton from './SaveButton';
+import LikeButton from '../like-button/like-button.component';
+import SaveButton from '../save-button/save-button.component';
 
-import './Collection.css';
+import './collection.style.css';
 
 const Collection = ({
   id, title, description, author, loggedInUser,

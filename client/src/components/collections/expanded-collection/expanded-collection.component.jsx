@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-import './ExpandedCollection.css';
+import LikeButton from '../like-button/like-button.component';
+import SaveButton from '../save-button/save-button.component';
 
-import LikeButton from './LikeButton';
-import SaveButton from './SaveButton';
+import './expanded-collection.style.css';
+
 
 const ExpandedCollection = ({ loggedInUser }) => {
   const [collection, setCollection] = useState([]);

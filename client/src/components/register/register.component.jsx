@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
 import { useHistory } from 'react-router-dom';
 
-import './Register.css';
+import './register.style.css';
 
 const register = ({ setLoggedInUser }) => {
   const history = useHistory();

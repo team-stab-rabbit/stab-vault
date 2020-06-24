@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Nav from './components/Nav';
-import Login from './components/Login';
-import Register from './components/Register';
-import Profile from './components/Profile';
-import PageNotFound from './components/PageNotFound';
-import WithAuth from './components/WithAuth';
+import Nav from '../nav/nav.component';
+import Login from '../login/login.component';
+import Register from '../register/register.component';
+import Profile from '../profile/profile.component';
+import PageNotFound from '../page-not-found/page-not-found.component';
+import WithAuth from '../with-auth/with-auth.component';
+import AllCollections from '../collections/all-collections/all-collections.component';
+import ExpandedCollection from '../collections/expanded-collection/expanded-collection.component';
+import SavedCollections from '../collections/saved-collections/saved-collections.component';
 
-import AllCollections from './components/collections/AllCollections';
-import ExpandedCollection from './components/collections/ExpandedCollection';
-import SavedCollections from './components/collections/SavedCollections';
-
-import './App.css';
+import './app.style.css';
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
