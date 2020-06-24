@@ -22,6 +22,7 @@ const Login = ({ setLoggedInUser }) => {
       .then((data) => {
         // If login was successful, redirect to homepage
         if (data.attempt === 'success') {
+          console.log(data)
           setLoggedInUser(data.userId);
           history.push('/');
         }

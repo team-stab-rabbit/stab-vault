@@ -10,12 +10,12 @@ import WithAuth from '../with-auth/with-auth.component';
 import AllCollections from '../collections/all-collections/all-collections.component';
 import ExpandedCollection from '../collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
+import Home from '../home/home.component'
 
 import './app.style.css';
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
-
   return (
     <Router>
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
@@ -46,8 +46,12 @@ const App = () => {
             <SavedCollections loggedInUser={loggedInUser} />
           </Route>
 
-          <Route path="/" exact>
+          <Route path="/all-collections" exact>
             <AllCollections loggedInUser={loggedInUser} />
+          </Route>
+
+          <Route path="/" exact>
+            <Home loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/">
