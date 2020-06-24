@@ -1,6 +1,5 @@
 const path = require('path');
-require('dotenv').config()
-
+const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -11,8 +10,8 @@ const verifyToken = require('./utils/verifyToken');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
-console.log(process.env.DB)
+// Dotenv
+dotenv.config();
 
 // ------
 // Routes

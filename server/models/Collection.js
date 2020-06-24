@@ -58,6 +58,4 @@ const CollectionSchema = new Schema({
   },
 });
 
-const Collection = mongoose.model('collection', CollectionSchema);
-
-module.exports = Collection;
+module.exports = mongoose.model('Collection', CollectionSchema);
