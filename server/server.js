@@ -1,4 +1,5 @@
 const path = require('path');
+const dotenv = require('dotenv');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -9,6 +10,9 @@ const verifyToken = require('./utils/verifyToken');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Dotenv
+dotenv.config();
 
 // ------
 // Routes
@@ -38,6 +42,8 @@ app.get('*', (req, res) => {
 // Connect to DB
 // Then start server
 // -----------------
+
+console.log('process.env.DB ->', process.env.DB);
 
 mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
