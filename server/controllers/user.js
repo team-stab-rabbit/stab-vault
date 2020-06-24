@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const saltRounds =                   10;
+const saltRounds =                    10;
 const secret = 'secret';
 
 // ----------
