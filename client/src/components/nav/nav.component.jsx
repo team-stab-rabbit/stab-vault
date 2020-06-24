@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import './Nav.css';
+import './nav.style.css';
 
 const Nav = ({ loggedInUser, setLoggedInUser }) => {
   const history = useHistory();

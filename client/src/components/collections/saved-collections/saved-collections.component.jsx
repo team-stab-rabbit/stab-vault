@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Collection from './Collection';
+import Collection from '../collection/collection.component';
 
 const SavedCollections = ({ loggedInUser }) => {
   const [collections, setCollections] = useState([]);

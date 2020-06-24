@@ -12,7 +12,7 @@ const Login = ({ setLoggedInUser }) => {
     if (!email || !password) return;
 
     fetch('/api/login', {
-      method: 'POST',
+      method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
       },
