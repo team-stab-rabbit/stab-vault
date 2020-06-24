@@ -24,7 +24,7 @@ exports.loginUser = (req, res) => {
     // User doesn't exist
     // TODO: pass something back to let the front-end know that user doesn't exist
     if (!user) {
-      console.log('User doesn\'t exist');
+      console.log("User doesn't exist");
       return res.redirect('/login');
     }
 
@@ -46,7 +46,9 @@ exports.loginUser = (req, res) => {
       const { _id: userId } = user;
       const payload = { userId };
       const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-      return res.cookie('token', token, { httpOnly: true }).send({ attempt: 'success', userId });
+      return res
+        .cookie('token', token, { httpOnly: true })
+        .send({ attempt: 'success', userId });
     });
   });
 };
@@ -94,7 +96,9 @@ exports.registerUser = async (req, res) => {
       const { _id: userId } = result;
       const payload = { userId };
       const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-      return res.cookie('token', token, { httpOnly: true }).send({ registrationSuccessful: true, userId });
+      return res
+        .cookie('token', token, { httpOnly: true })
+        .send({ registrationSuccessful: true, userId });
     })
     .catch((err) => {
       console.log('Error when saving user to DB: ', err);
