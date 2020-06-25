@@ -7,10 +7,10 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => {
   const history = useHistory();
 
   const logout = () => {
-    console.log('logging out');
-    // TODO: clear token cookie
-    setLoggedInUser('');
-    history.push('/');
+    fetch('/api/logout').then(() => {
+      setLoggedInUser('');
+      history.push('/');
+    });
   };
 
   return (

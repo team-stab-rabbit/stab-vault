@@ -20,7 +20,7 @@ const App = () => {
     fetch('/api/checkToken')
       .then((resp) => resp.json())
       .then((data) => setLoggedInUser(data.userId));
-  }, '');
+  });
   return (
     <Router>
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
