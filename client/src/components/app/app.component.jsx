@@ -8,8 +8,6 @@ import NotFound from '../../pages/not-found/not-found.page';
 import MyPaths from '../../pages/my-paths/my-paths.page'
 import PathEditor from '../../pages/path-editor/path-editor.page'
 import PathViewer from '../../pages/path-viewer/path-viewer.page'
-import Home from '../../pages/home/home.pages';
-
 
 import Nav from '../nav/nav.component';
 import Home from '../../pages/home/home.page'

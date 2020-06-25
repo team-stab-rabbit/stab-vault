@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import './home.style.css'
@@ -8,6 +8,7 @@ const Home = ({ loggedInUser }) => (
         { loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn() }
     </div>
 )
+
 
 // TODO: Add current path the loggedInUser and display as text
 // TODO: Need current path to pass to travel
