@@ -1,8 +1,5 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const Strategy = require('passport-local');
-
 
 const User = require('../models/user');
 
@@ -100,7 +97,7 @@ exports.registerUser = async (req, res) => {
       const payload = { userId };
       const token = jwt.sign(payload, secret, { expiresIn: '1h' });
       return res
-        .cookie('token', token, { httpOnly: true })
+        .cookie('token', token, { httpOnly: true, secure: true })
         .send({ registrationSuccessful: true, userId });
     })
     .catch((err) => {
