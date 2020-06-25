@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Login from '../../pages/login/login.page';
@@ -8,6 +8,8 @@ import NotFound from '../../pages/not-found/not-found.page';
 import MyPaths from '../../pages/my-paths/my-paths.page'
 import PathEditor from '../../pages/path-editor/path-editor.page'
 import PathViewer from '../../pages/path-viewer/path-viewer.page'
+import Home from '../../pages/home/home.pages';
+
 
 import Nav from '../nav/nav.component';
 import Home from '../../pages/home/home.page'
@@ -20,6 +22,11 @@ import './app.style.css';
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
+  useEffect(() => {
+    fetch('/api/checkToken')
+      .then((resp) => resp.json())
+      .then((data) => setLoggedInUser(data.userId));
+  });
   return (
     <Router>
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />

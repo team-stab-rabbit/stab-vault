@@ -97,11 +97,24 @@ exports.registerUser = async (req, res) => {
       const payload = { userId };
       const token = jwt.sign(payload, secret, { expiresIn: '1h' });
       return res
-        .cookie('token', token, { httpOnly: true })
+        .cookie('token', token, { httpOnly: true, secure: true })
         .send({ registrationSuccessful: true, userId });
     })
     .catch((err) => {
       console.log('Error when saving user to DB: ', err);
       res.send({ error: err });
     });
+};
+
+// ----------
+// Authenticate a user
+// ----------
+
+exports.findOneUser = async (req, res) => {
+  if (res.locals.userId) {
+    const user = await User.findById(res.locals.userId);
+    if (user) {
+      res.send({ userId: user._id });
+    }
+  }
 };

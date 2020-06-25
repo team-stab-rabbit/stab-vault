@@ -4,6 +4,7 @@ const secret = 'secret';
 
 const verifyToken = (req, res, next) => {
   const { token } = req.cookies;
+  console.log('token ->', token);
 
   if (!token) {
     return res.status(401).send('Unauthorized: No token provided');
@@ -14,7 +15,7 @@ const verifyToken = (req, res, next) => {
       return res.status(401).send('Unauthorized: Invalid token');
     }
 
-    req.email = decoded.email;
+    res.locals.userId = decoded.userId;
     return next();
   });
 };
