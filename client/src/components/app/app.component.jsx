@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Nav from '../nav/nav.component';
@@ -10,12 +10,17 @@ import WithAuth from '../with-auth/with-auth.component';
 import AllCollections from '../collections/all-collections/all-collections.component';
 import ExpandedCollection from '../collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
-import Home from '../home/home.component'
+import Home from '../home/home.component';
 
 import './app.style.css';
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
+  useEffect(() => {
+    fetch('/api/checkToken')
+      .then((resp) => resp.json())
+      .then((data) => setLoggedInUser(data.userId));
+  }, '');
   return (
     <Router>
       <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
