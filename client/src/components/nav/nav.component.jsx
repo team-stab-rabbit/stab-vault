@@ -16,15 +16,13 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => {
   return (
     <header className="header">
       <nav className="nav">
-        <ul className="nav__list">
-          <li className="nav__item">
-            <Link to="/" className="nav__link">
-              Home
-            </Link>
-          </li>
-
           {!loggedInUser && (
-            <>
+            <ul className="nav__list">
+              <li className="nav__item">
+                <Link to="/" className="nav__link">
+                  Home
+                </Link>
+              </li>
               <li className="nav__item">
                 <Link to="/login" className="nav__link">
                   Login
@@ -35,29 +33,13 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => {
                   Register
                 </Link>
               </li>
-            </>
+            </ul>
           )}
           {loggedInUser && (
-            <>
-              <li className="nav__item">
-                <Link to="/savedcollections" className="nav__link">
-                  Saved Collections
-                </Link>
-              </li>
-              {/* Profile nav bar item not completed but functionality can be added */}
-              {/* <li className="nav__item">
-                <Link to="/profile" className="nav__link">
-                  Profile
-                </Link>
-              </li> */}
-              <li className="nav__item">
-                <button type="button" className="nav__link" onClick={logout}>
-                  Logout
-                </button>
-              </li>
-            </>
+            <button className="nav__btn">
+              <i className="fas fa-user-astronaut fa-3x" />
+            </button>
           )}
-        </ul>
       </nav>
     </header>
   );
