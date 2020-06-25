@@ -1,5 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const Strategy = require('passport-local');
+
 
 const User = require('../models/user');
 
@@ -104,4 +107,17 @@ exports.registerUser = async (req, res) => {
       console.log('Error when saving user to DB: ', err);
       res.send({ error: err });
     });
+};
+
+// ----------
+// Authenticate a user
+// ----------
+
+exports.findOneUser = async (req, res) => {
+  if (res.locals.userId) {
+    const user = await User.findById(res.locals.userId);
+    if (user) {
+      res.send({ userId: user._id });
+    }
+  }
 };
