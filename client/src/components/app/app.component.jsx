@@ -5,18 +5,18 @@ import Login from '../../pages/login/login.page';
 import Register from '../../pages/register/register.page';
 import Settings from '../../pages/settings/settings.page';
 import NotFound from '../../pages/not-found/not-found.page';
-import MyPaths from '../../pages/my-paths/my-paths.page'
-import PathEditor from '../../pages/path-editor/path-editor.page'
-import PathViewer from '../../pages/path-viewer/path-viewer.page'
+import MyPaths from '../../pages/my-paths/my-paths.page';
+import PathEditor from '../../pages/path-editor/path-editor.page';
+import PathViewer from '../../pages/path-viewer/path-viewer.page';
 
 import Nav from '../nav/nav.component';
-import Home from '../../pages/home/home.page'
+import Home from '../../pages/home/home.page';
 import WithAuth from '../with-auth/with-auth.component';
 import AllCollections from '../collections/all-collections/all-collections.component';
 import ExpandedCollection from '../collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
 
-import './app.style.css';
+import styles from './app.style.css';
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState('');

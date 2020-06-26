@@ -23,7 +23,16 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        loaders: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -44,7 +53,6 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
-
   devServer: {
     historyApiFallback: true,
     proxy: {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './login.style.css'
+import styles from './login.style.css';
 
 const Login = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ const Login = ({ setLoggedInUser }) => {
     if (!email || !password) return;
 
     fetch('/api/login', {
-      method: 'POST', 
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,7 +24,6 @@ const Login = ({ setLoggedInUser }) => {
       .then((data) => {
         // If login was successful, redirect to homepage
         if (data.attempt === 'success') {
-          console.log(data)
           setLoggedInUser(data.userId);
           history.push('/');
         }
@@ -36,7 +35,7 @@ const Login = ({ setLoggedInUser }) => {
   };
 
   return (
-    <div className="login">
+    <div className={styles.login}>
       <h1>Login</h1>
 
       <form>
