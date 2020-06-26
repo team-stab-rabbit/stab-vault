@@ -7,6 +7,11 @@ header {
   background: none;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 .Nav {
   margin-left: auto;
 }
