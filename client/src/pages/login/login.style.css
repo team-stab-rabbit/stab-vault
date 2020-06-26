@@ -34,12 +34,13 @@
     box-shadow: 0 2px 2px hsla(0, 0%, 0%, .1);
     background-color: #E2E7EB;
     color: #424B59;
+    padding: .5rem;
 }
 
 .login button {
     height: 3rem;
     margin-top: 1rem;
-    width: 7rem;
+    width: 10rem;
     cursor: pointer;
     background: transparent;
     border: none;
