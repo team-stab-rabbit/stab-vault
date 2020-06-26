@@ -10,8 +10,9 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => (
     <nav className="nav">
         {!loggedInUser && 
             <>
-              <Link to="/register"><button className="nav__register">Register</button></Link>
-              <Link to="/login"><button className="nav__login">Login</button></Link>
+              <Link to="/"><button className="nav__btn nav__btn--home">Home</button></Link>
+              <Link to="/register"><button className="nav__btn nav__btn--sign-up">Sign Up</button></Link>
+              <Link to="/login"><button className="nav__btn nav__btn--login">Login</button></Link>
             </>
         }
         {loggedInUser && <NavDropDown setLoggedInUser={setLoggedInUser}/>}

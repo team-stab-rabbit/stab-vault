@@ -3,9 +3,7 @@ header {
   height: 3rem;
   margin-bottom: 4rem;
   display: flex;
-  color: white;
   position: sticky;
-  /* background: #E2E7EB; */
   background: none;
 }
 
@@ -13,35 +11,33 @@ header {
   margin-left: auto;
 }
 
-.nav__login {
-  height: 3rem;
-  width: 7rem;
-  cursor: pointer;
-  background: #CDD4DA;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 4px 6px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #E2E7EB;
-  border-radius: 10px;
-  margin-right: 1rem;
-  color: #222933;
-}
-
-.nav__register {
+.nav__btn {
   height: 3rem;
   width: 7rem;
   cursor: pointer;
   background: transparent;
-  border: none;
   margin-right: 1rem;
-  cursor: pointer;
+
+
+}
+
+/* Fix after designed */
+.nav__btn--login {
+  background: #CDD4DA;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 4px 6px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #E2E7EB;
+  border-radius: 10px;
+  color: #222933;
+}
+
+.nav__btn--sign-up {
+  border: none;
+  margin-right: 2rem;
   color: #222933;
   text-decoration-line: underline;
 }
 
-.nav__link {
-  border: 0;
-  background: none;
-  font-size: inherit;
-  text-decoration: underline;
-  color: inherit;
-  padding: 0;
-  outline: none;
+.nav__btn--home {
+  border: none;
+  margin-right: 1rem;
+  color: #222933;
 }
