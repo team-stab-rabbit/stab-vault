@@ -12,7 +12,7 @@ import PathViewer from '../../pages/path-viewer/path-viewer.page';
 import Nav from '../nav/nav.component';
 import Home from '../../pages/home/home.page';
 import WithAuth from '../with-auth/with-auth.component';
-import AllLearningPaths from '../collections/all-collections/all-collections.component';
+import AllLearningPaths from '../collections/all-learning-paths/all-learning-paths.component';
 import ExpandedLearningPath from '../collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
 import Home from '../home/home.component';
