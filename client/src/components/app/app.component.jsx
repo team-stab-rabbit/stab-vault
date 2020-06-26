@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Login from '../../pages/login/login.page';
+import Register from '../../pages/register/register.page';
+import Settings from '../../pages/settings/settings.page';
+import NotFound from '../../pages/not-found/not-found.page';
+import MyPaths from '../../pages/my-paths/my-paths.page'
+import PathEditor from '../../pages/path-editor/path-editor.page'
+import PathViewer from '../../pages/path-viewer/path-viewer.page'
+
 import Nav from '../nav/nav.component';
-import Login from '../login/login.component';
-import Register from '../register/register.component';
-import Profile from '../profile/profile.component';
-import PageNotFound from '../page-not-found/page-not-found.component';
+import Home from '../../pages/home/home.page'
 import WithAuth from '../with-auth/with-auth.component';
 import AllCollections from '../collections/all-collections/all-collections.component';
 import ExpandedCollection from '../collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
-import Home from '../home/home.component';
 
 import './app.style.css';
 
@@ -34,9 +38,9 @@ const App = () => {
             <Login setLoggedInUser={setLoggedInUser} />
           </Route>
 
-          <Route path="/profile">
+          <Route path="/settings">
             {/* To protect a route, simply wrap it with a WithAuth component */}
-            <WithAuth Component={Profile} />
+            <WithAuth Component={Settings} />
           </Route>
 
           <Route path="/collections/user/:userId">
@@ -55,12 +59,24 @@ const App = () => {
             <AllCollections loggedInUser={loggedInUser} />
           </Route>
 
+          <Route path="/my-paths" exact>
+            <WithAuth Component={MyPaths} />
+          </Route>
+
+          <Route path="/path-viewer" exact>
+            <WithAuth Component={PathViewer} />
+          </Route>
+
+          <Route path="/path-editor">
+            <PathEditor loggedInUser={loggedInUser} />
+          </Route>
+
           <Route path="/" exact>
             <Home loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/">
-            <PageNotFound />
+            <NotFound />
           </Route>
         </Switch>
       </main>

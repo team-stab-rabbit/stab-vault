@@ -4,7 +4,7 @@ const secret = 'secret';
 
 const verifyToken = (req, res, next) => {
   const { token } = req.cookies;
-  console.log('token ->', token)
+  console.log('token ->', token);
 
   if (!token) {
     return res.status(401).send('Unauthorized: No token provided');
