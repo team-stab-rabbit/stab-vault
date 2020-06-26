@@ -1,66 +1,22 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import NavDropDown from '../nav-drop-down/nav-drop-down.component'
 
 import './nav.style.css';
 
-const Nav = ({ loggedInUser, setLoggedInUser }) => {
-  const history = useHistory();
-
-  const logout = () => {
-    fetch('/api/logout').then(() => {
-      setLoggedInUser('');
-      history.push('/');
-    });
-  };
-
-  return (
-    <header className="header">
-      <nav className="nav">
-        <ul className="nav__list">
-          <li className="nav__item">
-            <Link to="/" className="nav__link">
-              Home
-            </Link>
-          </li>
-
-          {!loggedInUser && (
+const Nav = ({ loggedInUser, setLoggedInUser }) => (
+  <header className="header">
+    <nav className="nav">
+        {!loggedInUser && 
             <>
-              <li className="nav__item">
-                <Link to="/login" className="nav__link">
-                  Login
-                </Link>
-              </li>
-              <li className="nav__item">
-                <Link to="/register" className="nav__link">
-                  Register
-                </Link>
-              </li>
+              <Link to="/register"><button className="nav__register">Register</button></Link>
+              <Link to="/login"><button className="nav__login">Login</button></Link>
             </>
-          )}
-          {loggedInUser && (
-            <>
-              <li className="nav__item">
-                <Link to="/savedcollections" className="nav__link">
-                  Saved Collections
-                </Link>
-              </li>
-              {/* Profile nav bar item not completed but functionality can be added */}
-              {/* <li className="nav__item">
-                <Link to="/profile" className="nav__link">
-                  Profile
-                </Link>
-              </li> */}
-              <li className="nav__item">
-                <button type="button" className="nav__link" onClick={logout}>
-                  Logout
-                </button>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
-    </header>
-  );
-};
+        }
+        {loggedInUser && <NavDropDown setLoggedInUser={setLoggedInUser}/>}
+    </nav>
+  </header>
+);
 
 export default Nav;

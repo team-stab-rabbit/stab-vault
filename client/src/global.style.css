@@ -1,0 +1,6 @@
+:root {
+    --main-bg-color: #E5E5E5;
+    --main-fg-color: #212A34;
+    --secondary-bg-color: #D5DDE5;
+    background-color: var(--main-bg-color);
+  }
