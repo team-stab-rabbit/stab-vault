@@ -146,62 +146,37 @@ const register = ({ setLoggedInUser }) => {
   // ------
 
   return (
-    <div className={styles.RegisterPage}>
+    <div className={styles.Register}>
       <h1>Register</h1>
 
       {error && (
         <ul className={styles.FormError}>
           {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
-          {errorPassword && (
-            <li className={styles.FormErrorItem}>{errorPassword}</li>
-          )}
-          {errorPasswordConfirm && (
-            <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>
-          )}
+          {errorPassword && <li className={styles.FormErrorItem}>{errorPassword}</li>}
+          {errorPasswordConfirm && <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>}
         </ul>
       )}
 
       <form className={styles.RegisterForm}>
-        <label htmlFor="register-email" className={styles.InputLabel}>
-          <div className={styles.InputLabelText}>Email</div>
-          <input
-            type="text"
-            className={styles.InputLabelInput}
-            id="register-email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
+        <label htmlFor="register-email">
+          <div>Email</div>
+          <input type="text" id="register-email" onChange={(e) => setEmail(e.target.value)} value={email} />
         </label>
 
-        <label htmlFor="register-password" className={styles.InputLabel}>
-          <div className={styles.InputLabelText}>Password</div>
-          <div className={styles.InputLabelDescription}>
-            Minimum length of 3 characters
-          </div>
-          <input
-            type="password"
-            className={styles.InputLabelInput}
-            id="register-password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
+        <label htmlFor="register-password">
+          <div>Password</div>
+          <div className={styles.InputLabelDescription}>Minimum length of 3 characters</div>
+          <input type="password" id="register-password" onChange={(e) => setPassword(e.target.value)} value={password} />
         </label>
 
-        <label
-          htmlFor="register-confirm-password"
-          className={styles.InputLabel}
-        >
-          <div className={styles.InputLabelText}>Confirm Password</div>
-          <input
-            type="password"
-            className={styles.InputLabelInput}
-            id="register-confirm-password"
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            value={passwordConfirm}
-          />
+        <label htmlFor="register-confirm-password">
+          <div>Confirm Password</div>
+          <input type="password" id="register-confirm-password" onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm} />
         </label>
 
-        <input type="submit" value="Register" onClick={submitForm} />
+        <button type="submit" onClick={submitForm}>
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -1,36 +1,61 @@
-.RegisterPage {
-  font-family: Arial, Helvetica, sans-serif;
+.Register {
+  position: absolute;
+  top: 40rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 35rem;
+  width: 30rem;
+  padding-bottom: 3rem;
+  background: #cdd4da;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.7), 0px 8px 12px rgba(0, 0, 0, 0.1), inset 0px 3px 0px #e2e7eb;
+  border-radius: 20px;
+  color: #424b59;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-.RegisterForm {
-  display: inline-block;
+.Register > h1 {
+  font-size: 3rem;
+  margin-top: 2rem;
 }
 
-/* ----------- */
-/* Form inputs */
-/* ----------- */
-
-.InputLabel {
-  margin-bottom: 20px;
-  display: block;
+.Register form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.InputLabelText {
-  margin-bottom: 2px;
-  font-weight: 600;
+.Register label {
+  color: #707a88;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.Register input {
+  box-shadow: 0 -2px 0 hsla(0, 0%, 100%, 0.15), 0 2px 2px hsla(0, 0%, 0%, 0.1);
+  background-color: #e2e7eb;
+  color: #424b59;
+  padding: 0.5rem;
+}
+
+.Register button {
+  height: 3rem;
+  margin-top: 1rem;
+  width: 10rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #222933;
+  border-radius: 20px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 4px 6px rgba(0, 0, 0, 0.1), inset 0px 2px 0px #e2e7eb;
 }
 
 .InputLabelDescription {
-  margin-bottom: 4px;
-  color: grey;
-  font-size: 80%;
+  font-size: 1.1rem;
 }
-
-.InputLabelInput {}
-
 
 /* ----------- */
 /* Form errors */
@@ -38,9 +63,7 @@
 
 .FormError {
   color: red;
-  margin: 0 0 20px 0;
-  padding: 0 0 0 20px;
+  margin: 2rem 0 0 0;
+  padding: 0 0 0 2rem;
   display: block;
 }
-
-.FormErrorItem {}
