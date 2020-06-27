@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './register.style.css';
+import styles from './register.style.css';
 
 const register = ({ setLoggedInUser }) => {
   const history = useHistory();
@@ -176,69 +176,72 @@ const register = ({ setLoggedInUser }) => {
   // ------
 
   return (
-    <div className="register-page">
+    <div className={styles.RegisterPage}>
       <h1>Register</h1>
 
       {error && (
-        <ul className="form-error">
-          {errorEmail && <li className="form-error__item">{errorEmail}</li>}
+        <ul className={styles.FormError}>
+          {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
           {errorUsername && (
-            <li className="form-error__item">{errorUsername}</li>
+            <li className={styles.FormErrorItem}>{errorUsername}</li>
           )}
           {errorPassword && (
-            <li className="form-error__item">{errorPassword}</li>
+            <li className={styles.FormErrorItem}>{errorPassword}</li>
           )}
           {errorPasswordConfirm && (
-            <li className="form-error__item">{errorPasswordConfirm}</li>
+            <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>
           )}
         </ul>
       )}
 
-      <form className="register-form">
-        <label htmlFor="register-email" className="input-label">
-          <div className="input-label__text">Email</div>
+      <form className={styles.RegisterForm}>
+        <label htmlFor="register-email" className={styles.InputLabel}>
+          <div className={styles.InputLabelText}>Email</div>
           <input
             type="text"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
         </label>
 
-        <label htmlFor="register-username" className="input-label">
-          <div className="input-label__text">Username</div>
-          <div className="input-label__description">
+        <label htmlFor="register-username" className={styles.InputLabel}>
+          <div className={styles.InputLabelText}>Username</div>
+          <div className={styles.InputLabelDescription}>
             Length 3-16 characters, numbers, letters, -, and _ allowed
           </div>
           <input
             type="text"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-username"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
         </label>
 
-        <label htmlFor="register-password" className="input-label">
-          <div className="input-label__text">Password</div>
-          <div className="input-label__description">
+        <label htmlFor="register-password" className={styles.InputLabel}>
+          <div className={styles.InputLabelText}>Password</div>
+          <div className={styles.InputLabelDescription}>
             Minimum length of 3 characters
           </div>
           <input
             type="password"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
         </label>
 
-        <label htmlFor="register-confirm-password" className="input-label">
-          <div className="input-label__text">Confirm Password</div>
+        <label
+          htmlFor="register-confirm-password"
+          className={styles.InputLabel}
+        >
+          <div className={styles.InputLabelText}>Confirm Password</div>
           <input
             type="password"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-confirm-password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
             value={passwordConfirm}
