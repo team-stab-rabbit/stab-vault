@@ -8,6 +8,7 @@ import NotFound from '../pages/not-found/not-found.page';
 import MyPaths from '../pages/my-paths/my-paths.page';
 import PathEditor from '../pages/path-editor/path-editor.page';
 import PathViewer from '../pages/path-viewer/path-viewer.page';
+import CollectionForm from '../pages/collection-form/collection-form.page';
 import Home from '../pages/home/home.page';
 
 import WithAuth from './with-auth.route';
@@ -68,6 +69,10 @@ const Main = () => {
 
           <Route path="/path-editor">
             <PathEditor loggedInUser={loggedInUser} />
+          </Route>
+
+          <Route path="/collection-form">
+            <WithAuth Component={CollectionForm} />
           </Route>
 
           <Route path="/" exact>
