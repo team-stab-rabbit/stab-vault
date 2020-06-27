@@ -8,36 +8,33 @@ const Login = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-
-  const login = (e) => {
+  const [error, setError] = useState('');
+  const login = async (e) => {
     e.preventDefault();
-
-    if (!email || !password) return;
-
-    fetch('/api/login', {
+    if (!email || !password) return setError('All fields must be filled out');
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // If login was successful, redirect to homepage
-        if (data.attempt === 'success') {
-          setLoggedInUser(data.userId);
-          history.push('/');
-        }
-      })
-      .catch((err) => {
-        // TODO: handle error if fetch attempt fails
-        console.log('Error on login: ', err);
-      });
+    });
+    const data = await response.json();
+    if (data.error) {
+      return setError(data.error);
+    }
+    setLoggedInUser(data.userId);
+    return history.push('/');
   };
 
   return (
     <div className={styles.Login}>
       <h1>Login</h1>
+      {error && (
+        <ul className={styles.FormError}>
+          <li className={styles.FormErrorItem}>{error}</li>
+        </ul>
+      )}
 
       <form>
         <label htmlFor="login-email" className="input-label">
