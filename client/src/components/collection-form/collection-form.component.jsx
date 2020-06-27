@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import styles from './collection-form.css';
+
 const CollectionForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -34,27 +36,17 @@ const CollectionForm = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label htmlFor="title">
-        <span>Title: </span>
-        <input
-          type="text"
-          id="title"
-          onChange={handleTitleChange}
-          value={title}
-        />
+    <form onSubmit={handleFormSubmit} className={styles.Form}>
+      <label htmlFor="title" className={styles.Label}>
+        <span className={styles.LabelText}>Title: </span>
+        <input type="text" id="title" onChange={handleTitleChange} value={title} />
       </label>
-      <label htmlFor="description">
-        <span>Description: </span>
-        <textarea
-          type="text"
-          id="description"
-          onChange={handleDescriptionChange}
-          value={description}
-        />
+      <label htmlFor="description" className={styles.Label}>
+        <span className={styles.LabelText}>Description: </span>
+        <textarea type="text" id="description" onChange={handleDescriptionChange} value={description} />
       </label>
-      <label htmlFor="category">
-        <span>Category:</span>
+      <label htmlFor="category" className={styles.Label}>
+        <span className={styles.LabelText}>Category:</span>
         <select name="category" id="category" onChange={handleCategoryChange}>
           <option value="">choose the category</option>
           <option value="frontend">Front End</option>
@@ -62,7 +54,9 @@ const CollectionForm = () => {
           <option value="devops">Dev Ops</option>
         </select>
       </label>
-      <button type="submit">Create</button>
+      <button type="submit" className={styles.SubmitBtn}>
+        Create
+      </button>
     </form>
   );
 };
