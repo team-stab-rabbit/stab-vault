@@ -1,21 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import NavDropDown from '../nav-drop-down/nav-drop-down.component'
+import NavDropDown from '../nav-drop-down/nav-drop-down.component';
 
-import './nav.style.css';
+import styles from './nav.style.css';
 
 const Nav = ({ loggedInUser, setLoggedInUser }) => (
-  <header className="header">
-    <nav className="nav">
-        {!loggedInUser && 
-            <>
-              <Link to="/"><button className="nav__btn nav__btn--home">Home</button></Link>
-              <Link to="/register"><button className="nav__btn nav__btn--sign-up">Sign Up</button></Link>
-              <Link to="/login"><button className="nav__btn nav__btn--login">Login</button></Link>
-            </>
-        }
-        {loggedInUser && <NavDropDown setLoggedInUser={setLoggedInUser}/>}
+  <header className={styles.header}>
+    <nav className={styles.Nav}>
+      {!loggedInUser && (
+        <>
+          <Link to="/">
+            <button
+              type="button"
+              className={`${styles.NavBtn} ${styles.NavBtnHome}`}
+            >
+              Home
+            </button>
+          </Link>
+          <Link to="/register">
+            <button
+              type="button"
+              className={`${styles.NavBtn} ${styles.NavBtnSignUp}`}
+            >
+              Sign Up
+            </button>
+          </Link>
+          <Link to="/login">
+            <button
+              type="button"
+              className={`${styles.NavBtn} ${styles.NavBtnLogin}`}
+            >
+              Login
+            </button>
+          </Link>
+        </>
+      )}
+      {loggedInUser && <NavDropDown setLoggedInUser={setLoggedInUser} />}
     </nav>
   </header>
 );

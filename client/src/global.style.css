@@ -13,3 +13,13 @@
   --gray-100: #f8f9fa;
   background-color: var(--main-bg-color);
 }
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.4rem;
+  margin: 0;
+  font-family: sans-serif;
+}

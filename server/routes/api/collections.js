@@ -6,17 +6,9 @@ const Collection = require('../../models/Collection');
 const User = require('../../models/user');
 
 /* ================== Collection Schema ==================
-  author: {},       // The creator of the collection - references user table
   title: {},        // The title of the collection - string
   description: {},  // The description of the collection - string
-  hidden: {},      // Whether the collection is hidden(private) or public - boolean
-  contributors: [], // Contributors with edit access - array references users table
-  text: {},         // The content of the collection - string
-  links: [],        // Links in the collection - array of strings
-  likes: [],        // Likes on the collection - array of users - references users table
   category: {},     // Category of the collection - String
-  tags: [],         // Tags on a collection - Array of Strings
-  updated: {}       // The last date the collection was updated - default date.now when saved
   ========================================================
 */
 
@@ -51,17 +43,9 @@ Get all saved collections
 // Schema reference
 
 /*
-author: {},
 title: {},
 description: {},
-hidden: {},
-contributors: [],
-text: {},
-links: [],
-likes: [],
 category: {},
-tags: [],
-updated: {}
 */
 
 // GET '/api/collections'  - Get all collections in database - sorted by date
@@ -94,40 +78,13 @@ router.post(
       // Get username for user from the database
       // Get the user ID
 
-      const {
-        author,
-        title,
-        description,
-        hidden,
-        contributors,
-        text,
-        category,
-        tags,
-        links,
-      } = req.body;
+      const { title, description, category } = req.body;
 
       const collectionDetails = {};
 
-      if (author) collectionDetails.author = author;
       if (title) collectionDetails.title = title;
       if (description) collectionDetails.description = description;
-      if (hidden) collectionDetails.hidden = hidden;
       if (category) collectionDetails.category = category;
-      if (text) collectionDetails.text = text;
-
-      if (contributors) {
-        collectionDetails.contributors = contributors
-          .split(',')
-          .map((contributor) => contributor.trim());
-      }
-
-      if (tags) {
-        collectionDetails.tags = tags.split(',').map((tag) => tag.trim());
-      }
-
-      if (links) {
-        collectionDetails.links = links.split(',').map((link) => link.trim());
-      }
 
       const collection = new Collection(collectionDetails);
 
@@ -149,12 +106,10 @@ router.post(
 router.get('/:id', async (req, res) => {
   try {
     // Get user ID
-
     const collection = await Collection.findById(req.params.id);
 
     // Check if collection is public or private
     // If collection is private - check if user has access to view collection
-
     if (!collection) {
       return res.status(404).json({ msg: 'Collection not found' });
     }
@@ -165,11 +120,7 @@ router.get('/:id', async (req, res) => {
     if (err.kind === 'ObjectId') {
       return res.status(404).json({ msg: 'Collection not found' });
     }
-    return res
-      .status(500)
-      .send(
-        'Server Error or Collection not found due to invalid Collection ID',
-      );
+    return res.status(500).send('Server Error or Collection not found due to invalid Collection ID');
   }
 });
 
@@ -180,14 +131,7 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   const {
-    title,
-    description,
-    hidden,
-    contributors,
-    text,
-    category,
-    tags,
-    links,
+    title, description, hidden, contributors, text, category, tags, links,
   } = req.body;
 
   const collectionDetails = {};
@@ -199,9 +143,7 @@ router.put('/:id', async (req, res) => {
   if (text) collectionDetails.text = text;
 
   if (contributors) {
-    collectionDetails.contributors = contributors
-      .split(',')
-      .map((contributor) => contributor.trim());
+    collectionDetails.contributors = contributors.split(',').map((contributor) => contributor.trim());
   }
 
   if (tags) {
@@ -263,7 +205,7 @@ router.delete('/:id', async (req, res) => {
 // @access  Private
 
 router.put('/like/:id', async (req, res) => {
-  const collection = await Collection.findById((req.body.collectionId));
+  const collection = await Collection.findById(req.body.collectionId);
 
   try {
     if (collection.likes.filter((like) => like === req.body.id).length > 0) {
@@ -290,13 +232,11 @@ router.put('/unlike/:id', async (req, res) => {
   const collection = await Collection.findById(req.params.id);
 
   try {
-    if ((collection.likes.filter((like) => like.user === req.user.name)).length === 0) {
+    if (collection.likes.filter((like) => like.user === req.user.name).length === 0) {
       return res.status(400).json({ msg: 'You have not liked this collection' });
     }
 
-    const indexToRemove = collection.likes.map(
-      (like) => like.user.toString().indexOf(req.user.name),
-    );
+    const indexToRemove = collection.likes.map((like) => like.user.toString().indexOf(req.user.name));
 
     collection.likes.splice(indexToRemove, 1);
 
@@ -315,7 +255,7 @@ router.put('/unlike/:id', async (req, res) => {
 // @access  Private
 
 router.put('/save/:id', async (req, res) => {
-  const user = await User.findById((req.body.id));
+  const user = await User.findById(req.body.id);
 
   try {
     if (user.savedcollections.filter((col) => col === req.body.collectionId).length > 0) {
@@ -340,7 +280,7 @@ router.put('/save/:id', async (req, res) => {
 
 router.get('/savedcollections/:userId', async (req, res) => {
   // const collection = await Collection.findById((req.body.collectionId));
-  const user = await User.findById((req.params.userId));
+  const user = await User.findById(req.params.userId);
 
   try {
     if (user.savedcollections.length === 0) {
@@ -392,7 +332,7 @@ router.put('/tags/:id', async (req, res) => {
   const collection = Collection.findById(req.params.id);
 
   try {
-    if ((collection.tags.filter((tag) => tag.toString() === req.tag)).length > 0) {
+    if (collection.tags.filter((tag) => tag.toString() === req.tag).length > 0) {
       return res.status(400).json({ msg: 'Tag already exists on collection' });
     }
 
@@ -421,7 +361,9 @@ router.get('/user/:id', async (req, res) => {
   const userId = req.params.id;
 
   try {
-    const collections = await Collection.find({ author: userId }).sort({ date: -1 });
+    const collections = await Collection.find({ author: userId }).sort({
+      date: -1,
+    });
     res.json(collections);
   } catch (err) {
     console.error(err.message);

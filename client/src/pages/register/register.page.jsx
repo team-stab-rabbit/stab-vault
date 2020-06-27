@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './register.style.css';
+import styles from './register.style.css';
 
 const register = ({ setLoggedInUser }) => {
   const history = useHistory();
@@ -11,7 +11,6 @@ const register = ({ setLoggedInUser }) => {
   // -----------
 
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
@@ -21,9 +20,7 @@ const register = ({ setLoggedInUser }) => {
 
   let containsErrors = false;
   const [error, setError] = useState(false);
-
   const [errorEmail, setErrorEmail] = useState('');
-  const [errorUsername, setErrorUsername] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   const [errorPasswordConfirm, setErrorPasswordConfirm] = useState('');
 
@@ -35,7 +32,6 @@ const register = ({ setLoggedInUser }) => {
     containsErrors = false;
     setError(false);
     setErrorEmail('');
-    setErrorUsername('');
     setErrorPassword('');
     setErrorPasswordConfirm('');
   };
@@ -56,24 +52,6 @@ const register = ({ setLoggedInUser }) => {
     }
 
     setErrorEmail('');
-  };
-
-  // ------------------------
-  // Validate username format
-  // ------------------------
-
-  const validateUsernameFormat = () => {
-    // Regex for username validation from: https://www.regextester.com/104030
-    const regex = /^[a-z0-9_-]{3,16}$/;
-
-    if (!regex.test(username)) {
-      setErrorUsername('Please enter a valid username');
-      containsErrors = true;
-      setError(true);
-      return;
-    }
-
-    setErrorUsername('');
   };
 
   // ------------------------
@@ -112,7 +90,7 @@ const register = ({ setLoggedInUser }) => {
   // TODO: clear any tokens that might be lingering in the users cookies
 
   const sendUserData = async () => {
-    const userInfo = { email, username, password };
+    const userInfo = { email, password };
 
     const response = await fetch('/api/register', {
       method: 'POST',
@@ -128,13 +106,6 @@ const register = ({ setLoggedInUser }) => {
     // Email already exists
     if (data.emailAlreadyExists) {
       setErrorEmail('An account with that email already exists');
-      containsErrors = true;
-      setError(true);
-    }
-
-    // Username is taken
-    if (data.usernameTaken) {
-      setErrorUsername('Username already taken');
       containsErrors = true;
       setError(true);
     }
@@ -160,7 +131,6 @@ const register = ({ setLoggedInUser }) => {
 
     // Validate all inputs
     validateEmailFormat();
-    validateUsernameFormat();
     validatePasswordFormat();
     validatePasswordMatch();
 
@@ -176,69 +146,55 @@ const register = ({ setLoggedInUser }) => {
   // ------
 
   return (
-    <div className="register-page">
+    <div className={styles.RegisterPage}>
       <h1>Register</h1>
 
       {error && (
-        <ul className="form-error">
-          {errorEmail && <li className="form-error__item">{errorEmail}</li>}
-          {errorUsername && (
-            <li className="form-error__item">{errorUsername}</li>
-          )}
+        <ul className={styles.FormError}>
+          {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
           {errorPassword && (
-            <li className="form-error__item">{errorPassword}</li>
+            <li className={styles.FormErrorItem}>{errorPassword}</li>
           )}
           {errorPasswordConfirm && (
-            <li className="form-error__item">{errorPasswordConfirm}</li>
+            <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>
           )}
         </ul>
       )}
 
-      <form className="register-form">
-        <label htmlFor="register-email" className="input-label">
-          <div className="input-label__text">Email</div>
+      <form className={styles.RegisterForm}>
+        <label htmlFor="register-email" className={styles.InputLabel}>
+          <div className={styles.InputLabelText}>Email</div>
           <input
             type="text"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
         </label>
 
-        <label htmlFor="register-username" className="input-label">
-          <div className="input-label__text">Username</div>
-          <div className="input-label__description">
-            Length 3-16 characters, numbers, letters, -, and _ allowed
-          </div>
-          <input
-            type="text"
-            className="input-label__input"
-            id="register-username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </label>
-
-        <label htmlFor="register-password" className="input-label">
-          <div className="input-label__text">Password</div>
-          <div className="input-label__description">
+        <label htmlFor="register-password" className={styles.InputLabel}>
+          <div className={styles.InputLabelText}>Password</div>
+          <div className={styles.InputLabelDescription}>
             Minimum length of 3 characters
           </div>
           <input
             type="password"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
         </label>
 
-        <label htmlFor="register-confirm-password" className="input-label">
-          <div className="input-label__text">Confirm Password</div>
+        <label
+          htmlFor="register-confirm-password"
+          className={styles.InputLabel}
+        >
+          <div className={styles.InputLabelText}>Confirm Password</div>
           <input
             type="password"
-            className="input-label__input"
+            className={styles.InputLabelInput}
             id="register-confirm-password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
             value={passwordConfirm}
