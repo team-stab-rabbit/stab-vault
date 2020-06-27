@@ -20,6 +20,6 @@ module.exports = {
     'no-console': 0,
     'react/prop-types': 0,
     'no-underscore-dangle': 0,
-    'max-len': 1050,
+    'max-len': 0,
   },
 };
