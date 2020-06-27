@@ -65,6 +65,7 @@ const Login = ({ setLoggedInUser }) => {
           Login
         </button>
       </form>
+      <a href="/login/facebook">Log In with Facebook</a>
     </div>
   );
 };
