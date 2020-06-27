@@ -11,7 +11,6 @@ const register = ({ setLoggedInUser }) => {
   // -----------
 
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
@@ -21,9 +20,7 @@ const register = ({ setLoggedInUser }) => {
 
   let containsErrors = false;
   const [error, setError] = useState(false);
-
   const [errorEmail, setErrorEmail] = useState('');
-  const [errorUsername, setErrorUsername] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   const [errorPasswordConfirm, setErrorPasswordConfirm] = useState('');
 
@@ -35,7 +32,6 @@ const register = ({ setLoggedInUser }) => {
     containsErrors = false;
     setError(false);
     setErrorEmail('');
-    setErrorUsername('');
     setErrorPassword('');
     setErrorPasswordConfirm('');
   };
@@ -56,24 +52,6 @@ const register = ({ setLoggedInUser }) => {
     }
 
     setErrorEmail('');
-  };
-
-  // ------------------------
-  // Validate username format
-  // ------------------------
-
-  const validateUsernameFormat = () => {
-    // Regex for username validation from: https://www.regextester.com/104030
-    const regex = /^[a-z0-9_-]{3,16}$/;
-
-    if (!regex.test(username)) {
-      setErrorUsername('Please enter a valid username');
-      containsErrors = true;
-      setError(true);
-      return;
-    }
-
-    setErrorUsername('');
   };
 
   // ------------------------
@@ -112,7 +90,7 @@ const register = ({ setLoggedInUser }) => {
   // TODO: clear any tokens that might be lingering in the users cookies
 
   const sendUserData = async () => {
-    const userInfo = { email, username, password };
+    const userInfo = { email, password };
 
     const response = await fetch('/api/register', {
       method: 'POST',
@@ -128,13 +106,6 @@ const register = ({ setLoggedInUser }) => {
     // Email already exists
     if (data.emailAlreadyExists) {
       setErrorEmail('An account with that email already exists');
-      containsErrors = true;
-      setError(true);
-    }
-
-    // Username is taken
-    if (data.usernameTaken) {
-      setErrorUsername('Username already taken');
       containsErrors = true;
       setError(true);
     }
@@ -160,7 +131,6 @@ const register = ({ setLoggedInUser }) => {
 
     // Validate all inputs
     validateEmailFormat();
-    validateUsernameFormat();
     validatePasswordFormat();
     validatePasswordMatch();
 
@@ -182,9 +152,6 @@ const register = ({ setLoggedInUser }) => {
       {error && (
         <ul className={styles.FormError}>
           {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
-          {errorUsername && (
-            <li className={styles.FormErrorItem}>{errorUsername}</li>
-          )}
           {errorPassword && (
             <li className={styles.FormErrorItem}>{errorPassword}</li>
           )}
@@ -203,20 +170,6 @@ const register = ({ setLoggedInUser }) => {
             id="register-email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-          />
-        </label>
-
-        <label htmlFor="register-username" className={styles.InputLabel}>
-          <div className={styles.InputLabelText}>Username</div>
-          <div className={styles.InputLabelDescription}>
-            Length 3-16 characters, numbers, letters, -, and _ allowed
-          </div>
-          <input
-            type="text"
-            className={styles.InputLabelInput}
-            id="register-username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
           />
         </label>
 
