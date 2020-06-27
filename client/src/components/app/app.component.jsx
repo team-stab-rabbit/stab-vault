@@ -15,7 +15,7 @@ import WithAuth from '../with-auth/with-auth.component';
 import AllLearningPaths from '../collections/all-learning-paths/all-learning-paths.component';
 import ExpandedLearningPath from '../collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
-import Home from '../home/home.component';
+// import Home from '../home/home.component';
 
 import styles from './app.style.css';
 
