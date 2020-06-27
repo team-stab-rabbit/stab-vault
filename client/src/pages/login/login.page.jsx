@@ -35,7 +35,7 @@ const Login = ({ setLoggedInUser }) => {
   };
 
   return (
-    <div className={styles.login}>
+    <div className={styles.Login}>
       <h1>Login</h1>
 
       <form>
