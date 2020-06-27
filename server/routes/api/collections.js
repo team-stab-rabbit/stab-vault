@@ -2,21 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-const Collection = require('../../models/Collection');
+const Collection = require('../../models/collection');
 const User = require('../../models/user');
 
 /* ================== Collection Schema ==================
-  author: {},       // The creator of the collection - references user table
   title: {},        // The title of the collection - string
   description: {},  // The description of the collection - string
-  hidden: {},      // Whether the collection is hidden(private) or public - boolean
-  contributors: [], // Contributors with edit access - array references users table
-  text: {},         // The content of the collection - string
-  links: [],        // Links in the collection - array of strings
-  likes: [],        // Likes on the collection - array of users - references users table
   category: {},     // Category of the collection - String
-  tags: [],         // Tags on a collection - Array of Strings
-  updated: {}       // The last date the collection was updated - default date.now when saved
   ========================================================
 */
 
@@ -51,17 +43,9 @@ Get all saved collections
 // Schema reference
 
 /*
-author: {},
 title: {},
 description: {},
-hidden: {},
-contributors: [],
-text: {},
-links: [],
-likes: [],
 category: {},
-tags: [],
-updated: {}
 */
 
 // GET '/api/collections'  - Get all collections in database - sorted by date
@@ -95,39 +79,16 @@ router.post(
       // Get the user ID
 
       const {
-        author,
         title,
         description,
-        hidden,
-        contributors,
-        text,
         category,
-        tags,
-        links,
       } = req.body;
 
       const collectionDetails = {};
 
-      if (author) collectionDetails.author = author;
       if (title) collectionDetails.title = title;
       if (description) collectionDetails.description = description;
-      if (hidden) collectionDetails.hidden = hidden;
       if (category) collectionDetails.category = category;
-      if (text) collectionDetails.text = text;
-
-      if (contributors) {
-        collectionDetails.contributors = contributors
-          .split(',')
-          .map((contributor) => contributor.trim());
-      }
-
-      if (tags) {
-        collectionDetails.tags = tags.split(',').map((tag) => tag.trim());
-      }
-
-      if (links) {
-        collectionDetails.links = links.split(',').map((link) => link.trim());
-      }
 
       const collection = new Collection(collectionDetails);
 
@@ -149,12 +110,10 @@ router.post(
 router.get('/:id', async (req, res) => {
   try {
     // Get user ID
-
     const collection = await Collection.findById(req.params.id);
 
     // Check if collection is public or private
     // If collection is private - check if user has access to view collection
-
     if (!collection) {
       return res.status(404).json({ msg: 'Collection not found' });
     }
