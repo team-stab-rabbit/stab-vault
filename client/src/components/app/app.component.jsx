@@ -17,8 +17,6 @@ import ExpandedLearningPath from '../collections/expanded-collection/expanded-co
 import SavedCollections from '../collections/saved-collections/saved-collections.component';
 // import Home from '../home/home.component';
 
-import styles from './app.style.css';
-
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
   useEffect(() => {
