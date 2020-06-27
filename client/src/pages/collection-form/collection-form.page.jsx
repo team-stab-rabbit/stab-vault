@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styles from './collection-form.css';
 
@@ -6,6 +7,8 @@ const CollectionForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+
+  const history = useHistory();
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -32,7 +35,12 @@ const CollectionForm = () => {
         description,
         category,
       }),
-    });
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        // TODO: check result before pushing back to the other page
+        if (result) history.push('/path-editor/add-collection');
+      });
   };
 
   return (

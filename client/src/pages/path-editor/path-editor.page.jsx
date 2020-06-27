@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState, useRef } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { motion, useMotionValue } from 'framer-motion';
 import move from 'array-move';
 import findIndex from './find-index';
@@ -89,7 +90,8 @@ const Item = ({
 
 const PathEditor = () => {
   const [colors, setColors] = useState(initialColors);
-
+  const history = useHistory();
+  const location = useLocation();
   // We need to collect an array of height and position data for all of this component's
   // `Item` children, so we can later us that in calculations to decide when a dragging
   // `Item` should swap places with its siblings.
@@ -106,14 +108,24 @@ const PathEditor = () => {
     if (targetIndex !== i) setColors(move(colors, i, targetIndex));
   };
 
+  const handleAdd = () => {
+    console.log('checking location', location);
+    history.push(`${location.pathname}/add-collection`);
+  };
+
   return (
-    <main className={styles.PathEditorPage}>
-      <ul className={styles.PathEditor}>
-        {colors.map(([color, name], i) => (
-          <Item key={color} i={i} name={name} color={color} setPosition={setPosition} moveItem={moveItem} />
-        ))}
-      </ul>
-    </main>
+    <div>
+      <main className={styles.PathEditorPage}>
+        <ul className={styles.PathEditor}>
+          {colors.map(([color, name], i) => (
+            <Item key={color} i={i} name={name} color={color} setPosition={setPosition} moveItem={moveItem} />
+          ))}
+        </ul>
+      </main>
+      <button onClick={handleAdd} type="button">
+        Add
+      </button>
+    </div>
   );
 };
 
