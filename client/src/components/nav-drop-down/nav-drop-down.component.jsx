@@ -1,48 +1,57 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import useComponentVisible from '../../hooks/useComponentVisible'
+import useComponentVisible from '../../hooks/useComponentVisible';
 
-import './nav-drop-down.style.css'
+import styles from './nav-drop-down.style.css';
 
+const NavDropDown = ({ setLoggedInUser }) => {
+  const {
+    ref,
+    isComponentVisible,
+    setIsComponentVisible,
+  } = useComponentVisible(false);
 
-const NavDropDown = ({setLoggedInUser}) => {
-    const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+  return (
+    <div ref={ref} onClick={() => setIsComponentVisible(!isComponentVisible)}>
+      <button type="button" className={styles.NavDropdownBtn}>
+        <i className="fas fa-user-astronaut fa-3x" />
+      </button>
+      <div className={styles.NavDropdownModal}>
+        {isComponentVisible && <Links setLoggedInUser={setLoggedInUser} />}
+      </div>
+    </div>
+  );
+};
 
-    return (
-        <div ref={ref} onClick={() => setIsComponentVisible(!isComponentVisible)}>
-            <button className="nav-drop-down__btn"  >
-                <i className="fas fa-user-astronaut fa-3x" />
-            </button>
-            <div className="nav-drop-down__modal" >
-                { isComponentVisible && <Links setLoggedInUser={setLoggedInUser}/> }
-            </div>
-        </div>
-    )
-}
+const Links = ({ setLoggedInUser }) => {
+  const history = useHistory();
 
- 
-const Links = ({setLoggedInUser}) => {
-    const history = useHistory();    
+  const logout = (e) => {
+    e.preventDefault();
+    fetch('/api/logout').then(() => {
+      setLoggedInUser('');
+      history.push('/');
+    });
+  };
 
-    const logout = (e) => {
-        e.preventDefault()
-        fetch('/api/logout').then(() => {
-            setLoggedInUser('');
-            history.push('/');
-        });
-    }
+  return (
+    <>
+      <Link to="/" className={styles.NavDropdownOption}>
+        Home
+      </Link>
+      <Link to="/" className={styles.NavDropdownOption}>
+        My settings
+      </Link>
+      <button
+        type="button"
+        onClick={logout}
+        className={styles.NavDropdownOption}
+      >
+        Logout
+      </button>
+    </>
+  );
+};
 
-    return (
-        <>
-            <Link to="/" className="nav-drop-down__option">Home</Link>
-            <Link to="/" className="nav-drop-down__option">My settings</Link>
-            <a href='' onClick={logout} className="nav-drop-down__option">Logout</a>
-        </>
-    )
-
-}
-
-
-
-export default NavDropDown
+export default NavDropDown;

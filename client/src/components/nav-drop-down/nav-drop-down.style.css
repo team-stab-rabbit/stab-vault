@@ -1,4 +1,4 @@
-.nav-drop-down__modal {
+.NavDropdownModal {
     position: absolute;
     right: 2.5rem;
     top: 7rem;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.nav-drop-down__btn {
+.NavDropdownBtn {
     background: #CDD4DA;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15), 0px 3px 6px rgba(0, 0, 0, 0.1), inset 0px 2px 0px #E2E7EB;
     border-radius: 50px;
@@ -20,14 +20,14 @@
     padding: 0;
 }
 
-.nav-drop-down__option {
+.NavDropdownOption {
     color: #CDD4DA;
     text-decoration: none;
     display: block;
     padding: 1.5rem;
 }
 
-.nav-drop-down__option:hover {
+.NavDropdownOption:hover {
     color: #424B59;
     background-color: #CDD4DA;
 }
