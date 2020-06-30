@@ -1,5 +1,4 @@
 :root {
-  --main-bg-color: #e2e7eb;
   --main-fg-color: #212a34;
   --secondary-bg-color: #d5dde5;
   --gray-900: #222933;
@@ -11,7 +10,23 @@
   --gray-300: #d6dde4;
   --gray-200: #e2e7eb;
   --gray-100: #f8f9fa;
-  background-color: var(--main-bg-color);
+
+  --gray: #8D9BA7;
+  --white: #F5F7FA;
+  --black: #3F3D56;
+  --pink-primary: #E8368F;
+  --pink-secondary: #DA127D;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/ProximaNova-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/Proxima\ Nova\ Bold.otf');
+  font-weight: bold;
 }
 
 html {
@@ -21,5 +36,5 @@ html {
 body {
   font-size: 1.6rem;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Proxima Nova', sans-serif;
 }

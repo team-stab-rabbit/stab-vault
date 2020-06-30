@@ -21,16 +21,18 @@ const LoggedIn = (loggedInUser) => (
 
 const NotLoggedIn = () => (
   <>
-    <Link to="/all-paths">See paths</Link>
-    <Link to="/discover">Discover your path</Link>
-    <Link to="/path-editor">Forge own path</Link>
+    <Link className={styles.Link} to="/all-paths">
+      See paths
+    </Link>
+    <Link className={styles.Link} to="/discover">
+      Discover your path
+    </Link>
+    <Link className={styles.Link} to="/path-editor">
+      Forge own path
+    </Link>
   </>
 );
 
-const Home = ({ loggedInUser }) => (
-  <div className={styles.HomeContainer}>
-    {loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}
-  </div>
-);
+const Home = ({ loggedInUser }) => <div className={styles.HomeContainer}>{loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}</div>;
 
 export default Home;

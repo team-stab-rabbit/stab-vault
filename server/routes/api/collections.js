@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const Collection = require('../../models/Collection');
+const Collection = require('../../models/collection');
 const User = require('../../models/user');
 
 /* ================== Collection Schema ==================
@@ -56,7 +56,6 @@ category: {},
 router.get('/', async (req, res) => {
   try {
     const collections = await Collection.find().sort();
-    console.log(collections)
     res.json(collections);
   } catch (err) {
     console.error(err.message);

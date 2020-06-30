@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import LearningPath from '../collection/collection.component';
+import LearningPath from '../../components/collections/collection/collection.component';
 
 const AllLearningPaths = ({ loggedInUser, userCollections }) => {
   const [collections, setCollections] = useState([]);
@@ -81,9 +81,7 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
 
   return (
     <div>
-      <h1>
-        {userCollections ? `${userId}'s Learning Paths` : 'All Learning Paths'}
-      </h1>
+      <h1>{userCollections ? `${userId}'s Learning Paths` : 'All Learning Paths'}</h1>
 
       <div>
         <label htmlFor="search-input">
@@ -92,11 +90,7 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
         </label>
         <label htmlFor="filter-select">
           <span>Filter by:</span>
-          <select
-            name="filter"
-            id="filter-select"
-            onChange={handleFilterChange}
-          >
+          <select name="filter" id="filter-select" onChange={handleFilterChange}>
             <option value="likes">Likes</option>
             <option value="saved">Saved</option>
           </select>

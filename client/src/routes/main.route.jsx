@@ -8,15 +8,17 @@ import NotFound from '../pages/not-found/not-found.page';
 import MyPaths from '../pages/my-paths/my-paths.page';
 import PathEditor from '../pages/path-editor/path-editor.page';
 import PathViewer from '../pages/path-viewer/path-viewer.page';
+import CollectionForm from '../pages/collection-form/collection-form.page';
 import Home from '../pages/home/home.page';
 import CollectionViewer from '../pages/collection-viewer/collection-viewer.page'
 
 import WithAuth from './with-auth.route';
 
 import Nav from '../components/nav/nav.component';
-import AllLearningPaths from '../components/collections/all-learning-paths/all-learning-paths.component';
+import AllLearningPaths from '../pages/all-learning-paths/all-learning-paths.page';
 import ExpandedLearningPath from '../components/collections/expanded-collection/expanded-collection.component';
 import SavedCollections from '../components/collections/saved-collections/saved-collections.component';
+import AddCollectionView from '../pages/path-editor-add-collection/path-editor-add-collection.page';
 
 const Main = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
@@ -67,12 +69,20 @@ const Main = () => {
             <WithAuth Component={PathViewer} />
           </Route>
 
+          <Route path="/path-editor/add-collection">
+            <AddCollectionView />
+          </Route>
+
           <Route path="/path-editor">
             <PathEditor loggedInUser={loggedInUser} />
           </Route>
 
           <Route path="/collection-viewer">
             <CollectionViewer />
+          </Route>
+
+          <Route path="/collection-editor">
+            <CollectionForm />
           </Route>
 
           <Route path="/" exact>
