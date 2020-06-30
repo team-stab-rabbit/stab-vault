@@ -20,4 +20,4 @@ const pathSchema = new Schema({
   collections: [{ type: String }],
 });
 
-module.exports = mongoose.model('Paths', pathSchema);
+module.exports = mongoose.model('Path', pathSchema);
