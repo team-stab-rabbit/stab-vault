@@ -23,6 +23,7 @@ const CollectionSchema = new Schema({
   category: {
     type: String,
   },
+  links: [{ type: String }],
 });
 
 module.exports = mongoose.model('Collection', CollectionSchema);

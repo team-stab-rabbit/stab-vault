@@ -7,7 +7,16 @@ const userPathSchema = new Schema({
     type: String,
     required: true,
   },
+  author: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
   tags: [{ type: String }],
+  likes: [{ type: String }],
   collections: [{ type: String }],
   mainPath: {
     type: Boolean,
@@ -19,4 +28,4 @@ const userPathSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Userpaths', userPathSchema);
+module.exports = mongoose.model('Userpath', userPathSchema);
