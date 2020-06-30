@@ -9,6 +9,7 @@ import MyPaths from '../pages/my-paths/my-paths.page';
 import PathEditor from '../pages/path-editor/path-editor.page';
 import PathViewer from '../pages/path-viewer/path-viewer.page';
 import Home from '../pages/home/home.page';
+import CollectionViewer from '../pages/collection-viewer/collection-viewer.page'
 
 import WithAuth from './with-auth.route';
 
@@ -68,6 +69,10 @@ const Main = () => {
 
           <Route path="/path-editor">
             <PathEditor loggedInUser={loggedInUser} />
+          </Route>
+
+          <Route path="/collection-viewer">
+            <CollectionViewer />
           </Route>
 
           <Route path="/" exact>

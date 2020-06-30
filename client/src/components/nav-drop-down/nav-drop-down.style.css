@@ -21,6 +21,8 @@
 }
 
 .NavDropdownOption {
+    cursor: pointer;
+    background-color: #424B59;
     color: #CDD4DA;
     text-decoration: none;
     display: block;
