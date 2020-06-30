@@ -26,6 +26,4 @@ const CollectionSchema = new Schema({
   links: [{ type: String }],
 });
 
-// hi matt
-
 module.exports = mongoose.model('Collection', CollectionSchema);
