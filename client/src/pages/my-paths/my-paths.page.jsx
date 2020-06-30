@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const MyPaths = () => (
-    <>
-    {'My paths'}
-    </>
-)
+const MyPaths = () => <>{'My paths'}</>;
 
-export default MyPaths
+export default MyPaths;

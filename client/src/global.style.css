@@ -18,6 +18,17 @@
   --pink-secondary: #DA127D;
 }
 
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/ProximaNova-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/Proxima\ Nova\ Bold.otf');
+  font-weight: bold;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -25,5 +36,5 @@ html {
 body {
   font-size: 1.6rem;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Proxima Nova', sans-serif;
 }
