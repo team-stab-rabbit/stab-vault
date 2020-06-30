@@ -22,12 +22,15 @@ const LoggedIn = (loggedInUser) => (
 const NotLoggedIn = () => (
   <>
     <Link className={styles.Link} to="/all-paths">
+      <span data-content="See paths" />
       See paths
     </Link>
     <Link className={styles.Link} to="/discover">
+      <span data-content="Discover your path" />
       Discover your path
     </Link>
     <Link className={styles.Link} to="/path-editor">
+      <span data-content="Forge own path" />
       Forge own path
     </Link>
   </>
