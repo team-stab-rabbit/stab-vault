@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import useComponentVisible from '../../hooks/useComponentVisible';
+import useComponentVisible from '../../hooks/use-component-visible.hook';
 
 import styles from './nav-drop-down.style.css';
 

@@ -1,15 +1,32 @@
-.HomeContainer {
-    display: flex;
-    background-color: var(--white);
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    min-height: calc(100vh - 7.8rem);
-}
-
-.Link {
+Link {
     color: var(--pink-primary);
     font-size: 2.4rem;
     font-weight: bold;
+    padding: 1rem 3.2rem;
     text-decoration: none;
+    overflow: hidden;
 }
+span {
+    overflow: hidden;
+    transform: translateX(0);
+    transition: transform 275ms ease;
+}
+.Link:hover span {
+    transform: translateX(0);
+}
+span::before {
+    visibility: hidden;
+    content: attr(data-content);
+    color: midnightblue;
+    transform: translateX(0);
+    transition: transform 275ms ease;
+}
+.Link:hover span::before {
+    display: inline-block;
+    visibility: visible;
+    transform: translateX(100%);
+}
+/* .Link:hover span {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+    transform: translateX(0);
+} */
