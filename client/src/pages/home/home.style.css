@@ -1,11 +1,8 @@
 .HomeContainer {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    background-color: var(--white);
     flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 60rem;
+    justify-content: space-around;
+    align-items: center;
+    min-height: calc(100vh - 7.8rem);
 }

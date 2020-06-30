@@ -27,10 +27,6 @@ const NotLoggedIn = () => (
   </>
 );
 
-const Home = ({ loggedInUser }) => (
-  <div className={styles.HomeContainer}>
-    {loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}
-  </div>
-);
+const Home = ({ loggedInUser }) => <div className={styles.HomeContainer}>{loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}</div>;
 
 export default Home;
