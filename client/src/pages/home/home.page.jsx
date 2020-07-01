@@ -23,15 +23,21 @@ const NotLoggedIn = () => (
   <>
     <Link className={styles.Link} to="/all-paths">
       <span data-content="See paths" />
+      {'\u00A0\u00A0\u00A0'}
       See paths
+      {'\u00A0\u00A0\u00A0'}
     </Link>
     <Link className={styles.Link} to="/discover">
       <span data-content="Discover your path" />
+      {'\u00A0\u00A0\u00A0'}
       Discover your path
+      {'\u00A0\u00A0\u00A0'}
     </Link>
     <Link className={styles.Link} to="/path-editor">
       <span data-content="Forge own path" />
+      {'\u00A0\u00A0\u00A0'}
       Forge own path
+      {'\u00A0\u00A0\u00A0'}
     </Link>
   </>
 );
