@@ -147,35 +147,29 @@ const register = ({ setLoggedInUser }) => {
 
   return (
     <div className={styles.Register}>
-      <h1>Register</h1>
-
-      {error && (
-        <ul className={styles.FormError}>
-          {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
-          {errorPassword && <li className={styles.FormErrorItem}>{errorPassword}</li>}
-          {errorPasswordConfirm && <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>}
-        </ul>
-      )}
+      <div className={styles.RegisterHeader}>
+        <h1>Register</h1>
+        {error && (
+          <ul className={styles.FormError}>
+            {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
+            {errorPassword && <li className={styles.FormErrorItem}>{errorPassword}</li>}
+            {errorPasswordConfirm && <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>}
+          </ul>
+        )}
+      </div>
 
       <form className={styles.RegisterForm}>
-        <label htmlFor="register-email">
-          <div>Email</div>
-          <input type="text" id="register-email" onChange={(e) => setEmail(e.target.value)} value={email} />
-        </label>
-
-        <label htmlFor="register-password">
-          <div>Password</div>
-          <div className={styles.InputLabelDescription}>Minimum length of 3 characters</div>
-          <input type="password" id="register-password" onChange={(e) => setPassword(e.target.value)} value={password} />
-        </label>
-
-        <label htmlFor="register-confirm-password">
-          <div>Confirm Password</div>
-          <input type="password" id="register-confirm-password" onChange={(e) => setPasswordConfirm(e.target.value)} value={passwordConfirm} />
-        </label>
-
+        <input type="text" id="register-email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+        <input type="password" id="register-password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+        <input
+          type="password"
+          id="register-confirm-password"
+          placeholder="Confirm password"
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          value={passwordConfirm}
+        />
         <button type="submit" onClick={submitForm}>
-          Submit
+          Sign Up
         </button>
       </form>
     </div>
