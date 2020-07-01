@@ -8,7 +8,7 @@ export const removeCollection = (collection) => ({
   payload: collection,
 });
 
-export const setCollection = (collection) => ({
+export const setCollections = (collection) => ({
   type: 'set',
   payload: collection,
 });
