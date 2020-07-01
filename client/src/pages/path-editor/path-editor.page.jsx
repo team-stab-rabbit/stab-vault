@@ -132,10 +132,10 @@ const PathEditor = () => {
           {chosenCollections.length > 0
             && chosenCollections.map(({ title }, i) => <Item key={title} i={i} name={title} setPosition={setPosition} moveItem={moveItem} />)}
         </ul>
+        <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
+          Add
+        </button>
       </main>
-      <button onClick={handleAdd} type="button">
-        Add
-      </button>
     </div>
   );
 };
