@@ -22,17 +22,17 @@ span {
   font-weight: bold;
   text-decoration: none;
   overflow: hidden;
+  line-height: 6rem;
 }
 
 .Link:hover span {
   transform: translateX(0);
-
 }
 
 .Link span::before {
   display: inline-block;
   border-radius: 10px;
-  content: attr(data-content);
+  content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
   background-color: var(--pink-primary);
   color: var(--white);
   transform: translateX(100%);
@@ -41,5 +41,4 @@ span {
 
 .Link:hover span::before {
   transform: translateX(0);
-
 }
