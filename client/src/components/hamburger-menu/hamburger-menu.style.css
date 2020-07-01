@@ -1,4 +1,4 @@
-.NavDropdownModal {
+/* .NavDropdownModal {
     position: absolute;
     right: 2.5rem;
     top: 7rem;
@@ -32,4 +32,24 @@
 .NavDropdownOption:hover {
     color: #424B59;
     background-color: #CDD4DA;
-}
+} */
+
+
+.MotionNav, .MotionNav > nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+  }
+
+  .BackgroundContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    background: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+
+  }
