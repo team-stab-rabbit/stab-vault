@@ -29,9 +29,7 @@ const flat = {
   transition: { delay: 0.3 },
 };
 
-const Item = ({
-  color, setPosition, moveItem, i, name,
-}) => {
+const Item = ({ color, setPosition, moveItem, i, name }) => {
   const [isDragging, setDragging] = useState(false);
 
   // We'll use a `ref` to access the DOM element that the `motion.li` produces.
@@ -121,10 +119,10 @@ const PathEditor = () => {
             <Item key={color} i={i} name={name} color={color} setPosition={setPosition} moveItem={moveItem} />
           ))}
         </ul>
+        <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
+          Add
+        </button>
       </main>
-      <button onClick={handleAdd} type="button">
-        Add
-      </button>
     </div>
   );
 };
