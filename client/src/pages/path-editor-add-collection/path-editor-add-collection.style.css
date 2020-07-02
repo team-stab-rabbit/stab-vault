@@ -1,0 +1,20 @@
+.AddCollectionPage {
+  background-color: var(--gray-700);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100vh - 7.8rem);
+}
+
+.CategoryText {
+  color: var(--white);
+  margin-left: 1.6rem;
+}
+
+.CollectionView {
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  background-color: var(--black);
+  margin: 0 auto;
+}
