@@ -2,8 +2,7 @@
 
 const express = require('express');
 
-const router = express().Router();
-
+const router = express.Router();
 const UserPath = require('../../models/userpath.js');
 
 router.post('/',
@@ -33,5 +32,8 @@ router.post('/',
       res.json(userPath);
     } catch (err) {
       console.log(err);
+      res.status(500).send(`Server error: ${err._message}`);
     }
   });
+
+module.exports = router;
