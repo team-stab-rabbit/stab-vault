@@ -125,6 +125,10 @@ const PathEditor = () => {
     history.push(`${location.pathname}/add-collection`);
   };
 
+  // const handleSave = () => {
+  //   fetch('/api/collection/')
+  // }
+
   return (
     <div>
       <main className={styles.PathEditorPage}>
@@ -134,6 +138,9 @@ const PathEditor = () => {
         </ul>
         <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
           Add
+        </button>
+        <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
+          Save
         </button>
       </main>
     </div>
