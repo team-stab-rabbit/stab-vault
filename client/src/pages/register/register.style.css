@@ -1,47 +1,89 @@
-.register-page {
-  font-family: Arial, Helvetica, sans-serif;
-  display: inline-block;
+.Register {
+  position: absolute;
+  top: 40rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 45rem;
+  width: 30rem;
+  padding-bottom: 3rem;
+  background: var(--gray-700);
+  border-radius: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.register-form {
-  display: inline-block;
+.RegisterHeader {
+  background: var(--pink-primary);
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  height: 4.6rem;
+  text-align: center;
 }
 
-/* ----------- */
-/* Form inputs */
-/* ----------- */
-
-.input-label {
-  margin-bottom: 20px;
-  display: block;
+.RegisterHeader h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 4.6rem;
 }
 
-.input-label__text {
-  margin-bottom: 2px;
-  font-weight: 600;
+.Register form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding-top: 8rem;
 }
 
-.input-label__description {
-  margin-bottom: 4px;
-  color: grey;
-  font-size: 80%;
+.Register input {
+  background: var(--white);
+  border-radius: 1rem;
+  color: var(--gray-700);
+  padding: 0.5rem 1rem;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: normal;
+  line-height: 1.9rem;
+  width: 19.2rem;
+  height: 3.2rem;
+  border: none;
+  margin-bottom: 3rem;
 }
 
-.input-label__input {
-
+.Register input:first-of-type {
+  margin-bottom: 6rem;
 }
 
-/* ----------- */
-/* Form errors */
-/* ----------- */
-
-.form-error {
-  color: red;
-  margin: 0 0 20px 0;
-  padding: 0 0 0 20px;
-  display: block;
+.Register input::placeholder {
+  color: var(--gray-700);
+  font-size: 1.6rem;
 }
 
-.form-error__item {
+.Register button {
+  height: 4.6rem;
+  margin-top: 3rem;
+  width: 10rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: bold;
+  background-color: var(--black);
+  border-radius: 1rem;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+}
 
+.FormError {
+  color: var(-white);
+  background-color: var(--black);
+  font-size: 1.6rem;
+  margin: 2rem 0 0 0;
+  width: 100%;
 }
