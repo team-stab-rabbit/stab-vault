@@ -1,6 +1,40 @@
 :root {
-    --main-bg-color: #E2E7EB;
-    --main-fg-color: #212A34;
-    --secondary-bg-color: #D5DDE5;
-    background-color: var(--main-bg-color);
-  }
+  --main-fg-color: #212a34;
+  --secondary-bg-color: #d5dde5;
+  --gray-900: #222933;
+  --gray-800: #424b59;
+  --gray-700: #707a88;
+  --gray-600: #949faf;
+  --gray-500: #b1becb;
+  --gray-400: #cdd4da;
+  --gray-300: #d6dde4;
+  --gray-200: #e2e7eb;
+  --gray-100: #f8f9fa;
+
+  --gray: #8D9BA7;
+  --white: #F5F7FA;
+  --black: #3F3D56;
+  --pink-primary: #E8368F;
+  --pink-secondary: #DA127D;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/ProximaNova-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./assets/Proxima\ Nova\ Bold.otf');
+  font-weight: bold;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  margin: 0;
+  font-family: 'Proxima Nova', sans-serif;
+}

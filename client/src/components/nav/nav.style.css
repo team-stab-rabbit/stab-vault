@@ -1,10 +1,8 @@
 header {
-  padding: 1rem;
-  height: 3rem;
-  margin-bottom: 4rem;
+  padding: 2rem 1rem 2rem 2rem;
   display: flex;
-  position: sticky;
-  background: none;
+  flex-direction: row-reverse;
+  background-color: var(--gray);
 }
 
 button {
@@ -13,23 +11,22 @@ button {
 }
 
 .Nav {
-  margin-left: auto;
+  display: flex;
+  padding-right: 1.6rem;
 }
 
 .NavBtn {
-  height: 3rem;
-  width: 7rem;
+  font-size: 1.6rem;
+  padding: 1rem 1.6rem;
+  color: var(--white);
   cursor: pointer;
   background: transparent;
-  margin-right: 1rem;
-
-
 }
 
 /* Fix after designed */
 .NavBtnLogin {
-  background: #CDD4DA;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 4px 6px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #E2E7EB;
+  background: #cdd4da;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 4px 6px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #e2e7eb;
   border-radius: 10px;
   color: #222933;
 }
@@ -37,12 +34,9 @@ button {
 .NavBtnSignUp {
   border: none;
   margin-right: 2rem;
-  color: #222933;
-  text-decoration-line: underline;
 }
 
 .NavBtnHome {
   border: none;
   margin-right: 1rem;
-  color: #222933;
 }

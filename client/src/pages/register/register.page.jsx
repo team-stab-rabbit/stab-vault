@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './register.style.css';
+import styles from './register.style.css';
 
 const register = ({ setLoggedInUser }) => {
   const history = useHistory();
@@ -146,59 +146,31 @@ const register = ({ setLoggedInUser }) => {
   // ------
 
   return (
-    <div className="register-page">
-      <h1>Register</h1>
+    <div className={styles.Register}>
+      <div className={styles.RegisterHeader}>
+        <h1>Register</h1>
+        {error && (
+          <ul className={styles.FormError}>
+            {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
+            {errorPassword && <li className={styles.FormErrorItem}>{errorPassword}</li>}
+            {errorPasswordConfirm && <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>}
+          </ul>
+        )}
+      </div>
 
-      {error && (
-        <ul className="form-error">
-          {errorEmail && <li className="form-error__item">{errorEmail}</li>}
-          {errorPassword && (
-            <li className="form-error__item">{errorPassword}</li>
-          )}
-          {errorPasswordConfirm && (
-            <li className="form-error__item">{errorPasswordConfirm}</li>
-          )}
-        </ul>
-      )}
-
-      <form className="register-form">
-        <label htmlFor="register-email" className="input-label">
-          <div className="input-label__text">Email</div>
-          <input
-            type="text"
-            className="input-label__input"
-            id="register-email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </label>
-
-        <label htmlFor="register-password" className="input-label">
-          <div className="input-label__text">Password</div>
-          <div className="input-label__description">
-            Minimum length of 3 characters
-          </div>
-          <input
-            type="password"
-            className="input-label__input"
-            id="register-password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </label>
-
-        <label htmlFor="register-confirm-password" className="input-label">
-          <div className="input-label__text">Confirm Password</div>
-          <input
-            type="password"
-            className="input-label__input"
-            id="register-confirm-password"
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            value={passwordConfirm}
-          />
-        </label>
-
-        <input type="submit" value="Register" onClick={submitForm} />
+      <form className={styles.RegisterForm}>
+        <input type="text" id="register-email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+        <input type="password" id="register-password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+        <input
+          type="password"
+          id="register-confirm-password"
+          placeholder="Confirm password"
+          onChange={(e) => setPasswordConfirm(e.target.value)}
+          value={passwordConfirm}
+        />
+        <button type="submit" onClick={submitForm}>
+          Sign Up
+        </button>
       </form>
     </div>
   );

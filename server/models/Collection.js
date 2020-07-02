@@ -18,44 +18,12 @@ const { Schema } = mongoose;
 */
 
 const CollectionSchema = new Schema({
-  // author: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'users',
-  // },
-  author: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
-  hidden: { type: Boolean, required: true },
-  contributors: [{ type: String }],
-  // contributors: [
-  //   {
-  //     user: {
-  //       type: Schema.Types.ObjectId,
-  //       ref: 'users',
-  //     },
-  //   },
-  // ],
-  text: {
-    type: String,
-  },
-  links: [{ type: String }],
-  // likes: [
-  //   {
-  //     user: {
-  //       type: Schema.Types.ObjectId,
-  //       ref: 'users',
-  //     },
-  //   },
-  // ],
-  likes: [{ type: String }],
   category: {
     type: String,
   },
-  tags: [{ type: String }],
-  updated: {
-    type: Date,
-    default: Date.now,
-  },
+  links: [{ type: String }],
 });
 
 module.exports = mongoose.model('Collection', CollectionSchema);
