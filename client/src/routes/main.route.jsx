@@ -85,7 +85,7 @@ const Main = () => {
             </Route>
 
             <Route path="/path-editor">
-              <WithAuth Component={PathEditor} loggedInUser={loggedInUser} />
+              <WithAuth Component={PathEditor} loggedInUser={loggedInUser} userInfoPassThrough />
             </Route>
 
             <Route path="/collection-editor">

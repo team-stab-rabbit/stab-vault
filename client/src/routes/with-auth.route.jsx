@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-const WithAuth = ({ Component }) => {
+const WithAuth = ({ Component, userInfoPassThrough, loggedInUser }) => {
   const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
 
@@ -28,7 +28,7 @@ const WithAuth = ({ Component }) => {
     return <Redirect to="/login" />;
   }
 
-  return <Component />;
+  return <Component userInfo={userInfoPassThrough ? loggedInUser : undefined} />;
 };
 
 WithAuth.propTypes = {

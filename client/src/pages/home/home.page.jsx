@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import DriveAnimation from '../../components/drive-animation/drive-animation.component';
+import Mountains from '../../components/mountains/mountains.component';
+
 import styles from './home.style.css';
 
 // TODO: Add current path the loggedInUser and display as text
@@ -59,6 +62,14 @@ const NotLoggedIn = () => (
   </>
 );
 
-const Home = ({ loggedInUser }) => <div className={styles.HomeContainer}>{loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}</div>;
+const Home = ({ loggedInUser }) => (
+  <>
+    <div className={styles.Background}>
+      <div className={styles.HomeContainer}>{loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}</div>
+      <DriveAnimation />
+      <Mountains />
+    </div>
+  </>
+);
 
 export default Home;

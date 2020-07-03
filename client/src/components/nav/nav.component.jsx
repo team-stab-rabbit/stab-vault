@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { motion } from 'framer-motion';
 
-import NavDropDown from '../nav-drop-down/nav-drop-down.component';
+import HamburgerMenu from '../hamburger-menu/hamburger-menu.component';
 
 import styles from './nav.style.css';
 
@@ -35,7 +34,7 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => (
           </Link>
         </>
       )}
-      {loggedInUser && <NavDropDown setLoggedInUser={setLoggedInUser} />}
+      {loggedInUser && <HamburgerMenu setLoggedInUser={setLoggedInUser} />}
     </nav>
   </header>
 );

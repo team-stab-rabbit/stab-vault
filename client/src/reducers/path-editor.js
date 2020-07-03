@@ -1,20 +1,4 @@
-export const defaultState = [
-  {
-    title: 'CSS',
-    category: 'Front End',
-    description: 'Description of this collection',
-  },
-  {
-    title: 'HTML',
-    category: 'Front End',
-    description: 'Description of this collection',
-  },
-  {
-    title: 'SASS',
-    category: 'Front End',
-    description: 'Description of this collection',
-  },
-];
+export const defaultState = [];
 
 export default (state = defaultState, action) => {
   const { title } = action.payload; // get title from payload
