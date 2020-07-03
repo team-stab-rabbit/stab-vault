@@ -104,11 +104,9 @@ exports.findOneUser = async (req, res) => {
 };
 
 exports.handleFbLogin = async (req, res) => {
-  console.log('req.user ->', req.user);
   const { id } = req.user;
   let user;
   user = await User.findOne({ email: id }).exec();
-  console.log('user ->', user)
   if (!user) {
     const hashedId = await bcrypt.hash(id, saltRounds);
     user = await new User({ email: id, password: hashedId }).save();

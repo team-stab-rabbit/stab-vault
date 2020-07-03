@@ -35,7 +35,6 @@ app.get('/login/facebook/return',
   }),
   userController.handleFbLogin,
   (req, res) => {
-    console.log('in the redirect')
     res.redirect('/login');
   });
 
