@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ExpandedCollectionView from '../../components/collection-expand-view/collection-expand-view.component';
 
+import styles from './path-editor-add-collection.style.css';
+
 const AddCollectionView = () => {
   const history = useHistory();
 
@@ -50,33 +52,38 @@ const AddCollectionView = () => {
   const collectionsRender = collectionsByCategory
     && Object.keys(collectionsByCategory).map((category) => (
       <>
-        {category}
+        <div className={styles.CategoryText}>{category}</div>
+        <hr />
         {collectionsByCategory[category].map((collection) => (
-          <ExpandedCollectionView
-            key={collection.title + collection.category}
-            title={collection.title}
-            category={collection.category}
-            description={collection.description}
-            collectionID={collection._id}
-          />
+          <div className={styles.CollectionView}>
+            <ExpandedCollectionView
+              key={collection.title + collection.category}
+              title={collection.title}
+              category={collection.category}
+              description={collection.description}
+              collectionID={collection._id}
+            />
+          </div>
         ))}
       </>
     ));
 
   return (
-    <div>
+    <div className={styles.AddCollectionPage}>
       {/* {collections.length < 1
         ? 'Loading...'
         : collections.map(({ title, category, description }) => (
             <ExpandedCollectionView key={title} title={title} category={category} description={description} />
           ))} */}
       {collectionsRender}
-      <button type="button" onClick={handleCancel}>
-        Cancel
-      </button>
-      <button type="button" onClick={handleNew}>
-        New
-      </button>
+      <div className={styles.AddCollectionButtons}>
+        <button className={styles.CancelButton} type="button" onClick={handleCancel}>
+          Cancel
+        </button>
+        <button className={styles.AddButton} type="button" onClick={handleNew}>
+          New
+        </button>
+      </div>
     </div>
   );
 };
