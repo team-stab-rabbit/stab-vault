@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // add a user path to the DB and update it
 
 const express = require('express');
@@ -10,14 +11,15 @@ router.get('/', async (req, res) => {
     const allpaths = await UserPath.find({}).exec();
     res.json(allpaths);
   } catch (e) {
-    console.log(e);
     res.status(500).send(`Server error: ${e._message}`);
   }
 });
 
 router.post('/', async (req, res) => {
   try {
-    const { name, author, description, tags, likes, collections, mainPath, completed } = req.body;
+    const {
+      name, author, description, tags, likes, collections, mainPath, completed,
+    } = req.body;
     const userPathDetails = {};
     if (name) userPathDetails.name = name;
     if (author) userPathDetails.author = author;
@@ -31,7 +33,6 @@ router.post('/', async (req, res) => {
     await userPath.save();
     res.json(userPath);
   } catch (err) {
-    console.log(err);
     res.status(500).send(`Server error: ${err._message}`);
   }
 });
