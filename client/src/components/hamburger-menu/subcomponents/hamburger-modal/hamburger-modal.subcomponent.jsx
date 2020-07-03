@@ -47,7 +47,7 @@ const variants = {
   }
 };
 
-export const Navigation = ({ setLoggedInUser }) => {
+const HamburgerMenu = ({ setLoggedInUser }) => {
   const links = Links(setLoggedInUser)
   return (
     <motion.ul variants={variants} className={styles.NavList}>
@@ -58,3 +58,4 @@ export const Navigation = ({ setLoggedInUser }) => {
   )
 }
 
+export default HamburgerMenu
