@@ -1,0 +1,18 @@
+.MotionNav,
+.MotionNav > nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24rem;
+}
+
+.BackgroundContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 25rem;
+  background: var(--white);
+  box-shadow: var(--shadow-far);
+}
