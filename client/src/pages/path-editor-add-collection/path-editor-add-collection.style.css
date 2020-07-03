@@ -6,6 +6,29 @@
   min-height: calc(100vh - 7.8rem);
 }
 
+.AddCollectionButtons {
+  color: var(--black);
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.CancelButton {
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1.6rem;
+  min-width: 160px;
+}
+
+.AddButton {
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 160px;
+}
+
 .CategoryText {
   color: var(--white);
   font-size: 1.6rem;

@@ -73,12 +73,14 @@ const AddCollectionView = () => {
             <ExpandedCollectionView key={title} title={title} category={category} description={description} />
           ))} */}
       {collectionsRender}
-      <button type="button" onClick={handleCancel}>
-        Cancel
-      </button>
-      <button type="button" onClick={handleNew}>
-        New
-      </button>
+      <div className={styles.AddCollectionButtons}>
+        <button className={styles.CancelButton} type="button" onClick={handleCancel}>
+          Cancel
+        </button>
+        <button className={styles.AddButton} type="button" onClick={handleNew}>
+          New
+        </button>
+      </div>
     </div>
   );
 };
