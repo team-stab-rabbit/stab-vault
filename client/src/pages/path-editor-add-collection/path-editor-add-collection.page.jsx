@@ -24,7 +24,10 @@ const AddCollectionView = () => {
       .then((result) => result.json())
       .then((result) => {
         // TODO: check result before pushing back to the other page
-        const collectionsFromDb = result.map(({ title, description, category }) => ({
+        const collectionsFromDb = result.map(({
+          _id, title, description, category,
+        }) => ({
+          _id,
           title,
           description,
           category,
@@ -50,10 +53,11 @@ const AddCollectionView = () => {
         {category}
         {collectionsByCategory[category].map((collection) => (
           <ExpandedCollectionView
-            key={collection.title}
+            key={collection.title + collection.category}
             title={collection.title}
             category={collection.category}
             description={collection.description}
+            collectionID={collection._id}
           />
         ))}
       </>
