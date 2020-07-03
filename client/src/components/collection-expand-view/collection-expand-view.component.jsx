@@ -34,7 +34,7 @@ const ExpandedCollectionView = ({ title, category, description }) => {
           <h3 onClick={handleContainerClick}>{title}</h3>
           <h4>{category}</h4>
           <p>{description}</p>
-          <button onClick={handleUse} type="button">
+          <button className={styles.Button} onClick={handleUse} type="button">
             Use
           </button>
         </>
