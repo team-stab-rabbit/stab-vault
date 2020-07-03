@@ -27,7 +27,7 @@ const sidebar = {
   },
 };
 
-const NavDropDown = () => {
+const HamburgerMenu = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -41,4 +41,4 @@ const NavDropDown = () => {
   );
 };
 
-export default NavDropDown;
+export default HamburgerMenu;
