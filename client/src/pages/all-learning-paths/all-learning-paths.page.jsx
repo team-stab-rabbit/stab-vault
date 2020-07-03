@@ -27,19 +27,16 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
   useEffect(() => {
     // Check if we are trying to get all collections for a specific user
     if (userCollections) {
-      fetch(`/api/collections/user/${userId}`)
+      fetch('/api/userpaths')
         .then((res) => res.json())
         .then((result) => {
-          // assume result is an array
-          // transformLikes -> sort by like by default
           setCollections(transformLikes(result));
         });
 
       return;
     }
-
     // Otherwise just get all collections
-    fetch('/api/collections')
+    fetch('/api/userpaths')
       .then((res) => res.json())
       .then((result) => {
         // assume result is an array
@@ -76,8 +73,6 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
     }
     return collection.description.toLowerCase().includes(searchText);
   });
-
-  console.log(collectionsToRender);
 
   return (
     <div>

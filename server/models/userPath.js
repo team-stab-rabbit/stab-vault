@@ -17,11 +17,11 @@ const userPathSchema = new Schema({
   },
   tags: [{ type: String }],
   likes: [{ type: String }],
-  collections: [{ type: String }],
-  mainPath: {
-    type: Boolean,
-    required: false,
-  },
+  collections: [{ type: Schema.Types.ObjectId, ref: 'Collection' }],
+  // mainPath: {
+  //   type: Boolean,
+  //   required: false,
+  // },
   completed: {
     type: Boolean,
     required: false,
