@@ -24,12 +24,7 @@
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
-<<<<<<< HEAD
-    "passport-facebook": "^3.0.0",
-    "passport-local": "^1.0.0"
-=======
     "passport-facebook": "^3.0.0"
->>>>>>> c7d056fd447a3c3b80c017fba9fbda49841352b6
   },
   "devDependencies": {
     "eslint": "^7.2.0",
