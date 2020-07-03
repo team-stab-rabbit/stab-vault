@@ -93,7 +93,7 @@ router.post(
       console.error(err.message);
       res.status(500).send('Server Error');
     }
-  },
+  }
 );
 
 // GET '/api/collections/:id' - Get a collection by ID
@@ -128,9 +128,7 @@ router.get('/:id', async (req, res) => {
 // @access  Private
 
 router.put('/:id', async (req, res) => {
-  const {
-    title, description, hidden, contributors, text, category, tags, links,
-  } = req.body;
+  const { title, description, hidden, contributors, text, category, tags, links } = req.body;
 
   const collectionDetails = {};
 
@@ -158,7 +156,7 @@ router.put('/:id', async (req, res) => {
         _id: req.params.id,
       },
       collectionDetails,
-      { new: true, upsert: false },
+      { new: true, upsert: false }
     );
 
     if (!collection) {
@@ -204,7 +202,6 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/like/:id', async (req, res) => {
   const collection = await Collection.findById(req.body.collectionId);
-
   try {
     if (collection.likes.filter((like) => like === req.body.id).length > 0) {
       return res.status(400).json({ msg: 'You have already liked this collection' });
