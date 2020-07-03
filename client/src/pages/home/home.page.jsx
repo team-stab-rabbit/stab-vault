@@ -5,17 +5,34 @@ import styles from './home.style.css';
 
 // TODO: Add current path the loggedInUser and display as text
 // TODO: Need current path to pass to travel
-const LoggedIn = (loggedInUser) => (
+const LoggedIn = () => (
   <>
-    <Link to="/path-viewer">
+    {/* <Link className={styles.Link} to="/path-viewer">
       Travel
       {loggedInUser}
       path
+    </Link> */}
+    <Link className={styles.Link} to="/my-paths">
+      <span data-content="My paths" />
+      {'\u00A0\u00A0\u00A0'}
+      My paths
+      {'\u00A0\u00A0\u00A0'}
     </Link>
-    <Link to="/my-paths">My paths</Link>
-    <Link to="/all-paths">All paths</Link>
-    <Link to="/discover">Discover new path</Link>
-    <Link to="/path-editor">Forge new path</Link>
+    <Link className={styles.Link} to="/all-paths">
+      <span data-content="All paths" />
+      {'\u00A0\u00A0\u00A0'}
+      All paths
+      {'\u00A0\u00A0\u00A0'}
+    </Link>
+    {/* <Link className={styles.Link} to="/discover">
+      Discover new path
+    </Link> */}
+    <Link className={styles.Link} to="/path-editor">
+      <span data-content="Forge new path" />
+      {'\u00A0\u00A0\u00A0'}
+      Forge new path
+      {'\u00A0\u00A0\u00A0'}
+    </Link>
   </>
 );
 
