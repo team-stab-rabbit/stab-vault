@@ -29,24 +29,32 @@ const Login = ({ setLoggedInUser }) => {
 
   return (
     <div className={styles.Login}>
-      <h1>Login</h1>
-      {error && (
-        <ul className={styles.FormError}>
-          <li className={styles.FormErrorItem}>{error}</li>
-        </ul>
-      )}
+      <div className={styles.LoginHeader}>
+        <h1>Login</h1>
+        {error && (
+          <ul className={styles.FormError}>
+            <li className={styles.FormErrorItem}>{error}</li>
+          </ul>
+        )}
+      </div>
 
       <form>
-        <label htmlFor="login-email" className="input-label">
-          <div className="input-label__text">Email</div>
-          <input type="text" className="input-label__input" id="login-email" onChange={(e) => setEmail(e.target.value)} value={email} />
-        </label>
-
-        <label htmlFor="login-password" className="input-label">
-          <div className="input-label__text">Password</div>
-          <input type="password" className="input-label__input" id="login-password" onChange={(e) => setPassword(e.target.value)} value={password} />
-        </label>
-
+        <input
+          type="text"
+          className="input-label__input"
+          id="login-email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <input
+          type="password"
+          className="input-label__input"
+          id="login-password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
         <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} type="submit" onClick={login}>
           Login
         </motion.button>

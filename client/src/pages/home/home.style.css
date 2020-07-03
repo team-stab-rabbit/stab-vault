@@ -1,32 +1,55 @@
-Link {
-    color: var(--pink-primary);
-    font-size: 2.4rem;
-    font-weight: bold;
-    padding: 1rem 3.2rem;
-    text-decoration: none;
-    overflow: hidden;
+.Background {
+  background-color: var(--white);
+  z-index: -1;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
 }
+
+.HomeContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  top: 7.8rem;
+  height: calc(100vh - 7.8rem);
+  width: 100vw;
+  z-index: 1;
+}
+
 span {
-    overflow: hidden;
-    transform: translateX(0);
-    transition: transform 275ms ease;
+  position: absolute;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 275ms ease;
 }
+
+.Link {
+  position: relative;
+  border-radius: 10px;
+  color: var(--pink-primary);
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  overflow: hidden;
+  line-height: 6rem;
+}
+
 .Link:hover span {
-    transform: translateX(0);
+  transform: translateX(0);
 }
-span::before {
-    visibility: hidden;
-    content: attr(data-content);
-    color: midnightblue;
-    transform: translateX(0);
-    transition: transform 275ms ease;
+
+.Link span::before {
+  display: inline-block;
+  border-radius: 10px;
+  content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
+  background-color: var(--pink-primary);
+  color: var(--white);
+  transform: translateX(100%);
+  transition: transform 275ms ease;
 }
+
 .Link:hover span::before {
-    display: inline-block;
-    visibility: visible;
-    transform: translateX(100%);
+  transform: translateX(0);
 }
-/* .Link:hover span {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-    transform: translateX(0);
-} */

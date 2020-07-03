@@ -22,6 +22,10 @@ const CollectionForm = () => {
     setCategory(e.target.value);
   };
 
+  const handleCancel = () => {
+    history.replace('/path-editor/add-collection');
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -62,6 +66,9 @@ const CollectionForm = () => {
           <option value="devops">Dev Ops</option>
         </select>
       </label>
+      <button type="button" onClick={handleCancel}>
+        Cancel
+      </button>
       <button type="submit" className={styles.SubmitBtn}>
         Create
       </button>
