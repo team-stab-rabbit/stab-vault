@@ -6,8 +6,11 @@ import { useHistory } from 'react-router-dom';
 import PathEditorContext from '../../contexts/path-editor-context';
 import { addCollection } from '../../actions/path-editor';
 import styles from './collection-expand-view.css';
+// import { collection } from '../../../../server/models/userpath';
 
-const ExpandedCollectionView = ({ title, category, description }) => {
+const ExpandedCollectionView = ({
+  collectionID, title, category, description,
+}) => {
   const history = useHistory();
   const [expanded, toggleExpanded] = useState(false);
   const { dispatch } = useContext(PathEditorContext);
@@ -15,6 +18,7 @@ const ExpandedCollectionView = ({ title, category, description }) => {
   const handleUse = () => {
     dispatch(
       addCollection({
+        _id: collectionID,
         title,
         description,
         category,
