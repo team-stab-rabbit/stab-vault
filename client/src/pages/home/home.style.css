@@ -1,15 +1,55 @@
+.Background {
+  background-color: var(--white);
+  z-index: -1;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
 .HomeContainer {
-    display: flex;
-    background-color: var(--white);
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    min-height: calc(100vh - 7.8rem);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  top: 7.8rem;
+  height: calc(100vh - 7.8rem);
+  width: 100vw;
+  z-index: 1;
+}
+
+span {
+  position: absolute;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 275ms ease;
 }
 
 .Link {
-    color: var(--pink-primary);
-    font-size: 2.4rem;
-    font-weight: bold;
-    text-decoration: none;
+  position: relative;
+  border-radius: 10px;
+  color: var(--pink-primary);
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  overflow: hidden;
+  line-height: 6rem;
+}
+
+.Link:hover span {
+  transform: translateX(0);
+}
+
+.Link span::before {
+  display: inline-block;
+  border-radius: 10px;
+  content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
+  background-color: var(--pink-primary);
+  color: var(--white);
+  transform: translateX(100%);
+  transition: transform 275ms ease;
+}
+
+.Link:hover span::before {
+  transform: translateX(0);
 }

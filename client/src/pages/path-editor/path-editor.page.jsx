@@ -1,26 +1,36 @@
-import * as React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import React, {
+  useContext, useEffect, useState, useRef,
+} from 'react';
+
 import { useHistory, useLocation } from 'react-router-dom';
 import { motion, useMotionValue } from 'framer-motion';
 import move from 'array-move';
 import findIndex from './find-index';
-
 import styles from './path-editor.style.css';
 
-const initialColors = [
-  ['#FF008C', 'HTML'],
-  ['#D309E1', 'CSS'],
-  ['#9C1AFF', 'Internet'],
-  ['#7700FF', 'Javascript'],
-  ['#9700FF', 'FLEXBOX!'],
-];
-const heights = {
-  '#FF008C': 50,
-  '#D309E1': 50,
-  '#9C1AFF': 50,
-  '#7700FF': 50,
-  '#9700FF': 50,
-};
+import PathEditorContext from '../../contexts/path-editor-context';
+import { setCollections } from '../../actions/path-editor';
+
+// --- reference only ---
+// const initialColors = [
+//   ['#FF008C', 'HTML'],
+//   ['#D309E1', 'CSS'],
+//   ['#9C1AFF', 'Internet'],
+//   ['#7700FF', 'Javascript'],
+//   ['#9700FF', 'FLEXBOX!'],
+// ];
+
+// --- reference only ---
+// const initialColors = [['#FF008C'], ['#D309E1'], ['#9C1AFF'], ['#7700FF'], ['#9700FF']];
+
+// --- reference only ---
+// const heights = {
+//   '#FF008C': 50,
+//   '#D309E1': 50,
+//   '#9C1AFF': 50,
+//   '#7700FF': 50,
+//   '#9700FF': 50,
+// };
 
 // Spring configs
 const onTop = { zIndex: 1 };
@@ -30,7 +40,7 @@ const flat = {
 };
 
 const Item = ({
-  color, setPosition, moveItem, i, name,
+  setPosition, moveItem, i, name,
 }) => {
   const [isDragging, setDragging] = useState(false);
 
@@ -59,7 +69,7 @@ const Item = ({
       initial={false}
       // If we're dragging, we want to set the zIndex of that item to be on top of the other items.
       animate={isDragging ? onTop : flat}
-      style={{ background: color, height: heights[color] }}
+      style={{ background: '#FF008C', height: 50 }} // background is of the Item
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 1.12 }}
       drag="y"
@@ -89,9 +99,12 @@ const Item = ({
 };
 
 const PathEditor = () => {
-  const [colors, setColors] = useState(initialColors);
+  // reference only
+  // const [colors, setColors] = useState(initialColors);
   const history = useHistory();
   const location = useLocation();
+  const { chosenCollections, dispatch } = useContext(PathEditorContext);
+
   // We need to collect an array of height and position data for all of this component's
   // `Item` children, so we can later us that in calculations to decide when a dragging
   // `Item` should swap places with its siblings.
@@ -105,11 +118,10 @@ const PathEditor = () => {
   // sibling.
   const moveItem = (i, dragOffset) => {
     const targetIndex = findIndex(i, dragOffset, positions);
-    if (targetIndex !== i) setColors(move(colors, i, targetIndex));
+    if (targetIndex !== i) dispatch(setCollections(move(chosenCollections, i, targetIndex)));
   };
 
   const handleAdd = () => {
-    console.log('checking location', location);
     history.push(`${location.pathname}/add-collection`);
   };
 
@@ -117,14 +129,13 @@ const PathEditor = () => {
     <div>
       <main className={styles.PathEditorPage}>
         <ul className={styles.PathEditor}>
-          {colors.map(([color, name], i) => (
-            <Item key={color} i={i} name={name} color={color} setPosition={setPosition} moveItem={moveItem} />
-          ))}
+          {chosenCollections.length > 0
+            && chosenCollections.map(({ title }, i) => <Item key={title} i={i} name={title} setPosition={setPosition} moveItem={moveItem} />)}
         </ul>
+        <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
+          Add
+        </button>
       </main>
-      <button onClick={handleAdd} type="button">
-        Add
-      </button>
     </div>
   );
 };

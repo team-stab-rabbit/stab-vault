@@ -20,11 +20,11 @@ const userPathSchema = new Schema({
   collections: [{ type: String }],
   mainPath: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   completed: {
     type: Boolean,
-    required: true,
+    required: false,
   },
 });
 

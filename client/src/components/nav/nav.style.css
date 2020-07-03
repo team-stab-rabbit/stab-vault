@@ -23,6 +23,16 @@ button {
   background: transparent;
 }
 
+.NavBtnSignUp {
+  border: none;
+  margin-right: 2rem;
+}
+
+.NavBtnHome {
+  border: none;
+  margin-right: 1rem;
+}
+
 /* Fix after designed */
 .NavBtnLogin {
   background: #cdd4da;
