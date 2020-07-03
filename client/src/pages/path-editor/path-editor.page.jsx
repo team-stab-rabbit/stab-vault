@@ -98,7 +98,7 @@ const Item = ({
   );
 };
 
-const PathEditor = () => {
+const PathEditor = ({ userInfo }) => {
   // reference only
   // const [colors, setColors] = useState(initialColors);
   const history = useHistory();
@@ -125,9 +125,29 @@ const PathEditor = () => {
     history.push(`${location.pathname}/add-collection`);
   };
 
-  // const handleSave = () => {
-  //   fetch('/api/collection/')
-  // }
+  const handleSave = () => {
+    fetch('/api/userpaths', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: userInfo,
+        author: userInfo,
+        description: 'We collectively agreed that we will ignore this :D',
+        collections: chosenCollections.map((collection) => collection._id),
+        completed: false,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('result', res);
+        history.push('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -139,7 +159,7 @@ const PathEditor = () => {
         <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
           Add
         </button>
-        <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
+        <button className={styles.AddCollectionButton} onClick={handleSave} type="button">
           Save
         </button>
       </main>
