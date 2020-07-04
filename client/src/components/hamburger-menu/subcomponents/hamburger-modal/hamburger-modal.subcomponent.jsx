@@ -26,11 +26,12 @@ const Links = ( setLoggedInUser ) => {
       <Link to="/" className={styles.NavListItem}>
         <div className={styles.IconPlaceholder} />
         <div className={styles.TextPlaceholder}>My Settings</div>
-      </Link>,
+      </Link>
     <a
       type="button"
       onClick={logout}
       className={styles.NavListItem}
+      role="link"
     >
       <div className={styles.IconPlaceholder}/>
       <div className={styles.TextPlaceholder}>Logout</div>
