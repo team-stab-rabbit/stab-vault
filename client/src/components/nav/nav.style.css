@@ -3,6 +3,7 @@ header {
   display: flex;
   flex-direction: row-reverse;
   background-color: var(--gray);
+  min-height: 7.8rem;
 }
 
 button {

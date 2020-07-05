@@ -1,0 +1,16 @@
+/* .Animation {
+  position: fixed;
+  height: calc(90vh);
+  z-index: -1;
+  top: calc(56vh);
+  left: 50vw;
+  transform: translate(-50%, -50%);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .Animation {
+    width: 100vw;
+    top: calc(58vh);
+  }
+} */
