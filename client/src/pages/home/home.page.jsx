@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Animation from '../../components/animation/animation.component';
@@ -6,8 +6,7 @@ import Mountains from '../../components/mountains/mountains.component';
 
 import styles from './home.style.css';
 
-// TODO: Add current path the loggedInUser and display as text
-// TODO: Need current path to pass to travel
+
 const LoggedIn = (setAnimation) => (
   <>
     <Link className={styles.Link} to="/my-paths">
@@ -36,15 +35,15 @@ const LoggedIn = (setAnimation) => (
   </>
 );
 
-const NotLoggedIn = () => (
+const NotLoggedIn = (setAnimation) => (
   <>
-    <Link className={styles.Link} to="/all-paths">
+    <button className={styles.Link} onClick={() => setAnimation(<Animation animationName="notLoggedInAllPaths" link="/all-paths" />)}>
       <span data-content="See paths" />
       {'\u00A0\u00A0\u00A0'}
       See paths
       {'\u00A0\u00A0\u00A0'}
-    </Link>
-    <button type="button">
+    </button>
+    <button type="button" className={styles.Link} >
       <span data-content="Forge own path" />
       {'\u00A0\u00A0\u00A0'}
       Forge own path
@@ -55,6 +54,15 @@ const NotLoggedIn = () => (
 
 const Home = ({ loggedInUser }) => {
   const [animation, setAnimation] = useState(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />);
+  const loggedStateChanged = useRef(loggedInUser)
+
+  if(loggedStateChanged.current !== loggedInUser) {
+    loggedStateChanged.current = loggedInUser
+    setAnimation(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />)
+  }
+
+  console.log(loggedStateChanged)
+  console.log(loggedInUser)
 
   return (
     <>
