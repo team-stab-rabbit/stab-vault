@@ -19,6 +19,7 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
       });
   }, []);
 
+  console.log(collections)
 
   return (
     <div className={styles.Background}>
