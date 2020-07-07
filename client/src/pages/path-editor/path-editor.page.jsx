@@ -1,6 +1,4 @@
-import React, {
-  useContext, useEffect, useState, useRef,
-} from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 
 import { useHistory, useLocation } from 'react-router-dom';
 import { motion, useMotionValue } from 'framer-motion';
@@ -8,7 +6,7 @@ import move from 'array-move';
 import findIndex from './find-index';
 
 import PathEditorContext from '../../contexts/path-editor-context';
-import { setCollections } from '../../actions/path-editor';
+import { setCollections, setPathName } from '../../actions/path-editor';
 import Animation from '../../components/animation/animation.component';
 
 import styles from './path-editor.style.css';
@@ -41,9 +39,7 @@ const flat = {
   transition: { delay: 0.3 },
 };
 
-const Item = ({
-  setPosition, moveItem, i, name,
-}) => {
+const Item = ({ setPosition, moveItem, i, name }) => {
   const [isDragging, setDragging] = useState(false);
 
   // We'll use a `ref` to access the DOM element that the `motion.li` produces.
@@ -105,7 +101,9 @@ const PathEditor = ({ userInfo }) => {
   // const [colors, setColors] = useState(initialColors);
   const history = useHistory();
   const location = useLocation();
-  const { chosenCollections, dispatch } = useContext(PathEditorContext);
+  const { pathName, chosenCollections, dispatch } = useContext(PathEditorContext);
+  const [isOpen, setOpen] = useState(false);
+  const [pathNameInput, setPathNameInput] = useState('');
 
   // We need to collect an array of height and position data for all of this component's
   // `Item` children, so we can later us that in calculations to decide when a dragging
@@ -134,7 +132,8 @@ const PathEditor = ({ userInfo }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: userInfo,
+        id: userInfo,
+        name: pathName,
         author: userInfo,
         description: 'We collectively agreed that we will ignore this :D',
         collections: chosenCollections.map((collection) => collection._id),
@@ -151,12 +150,29 @@ const PathEditor = ({ userInfo }) => {
       });
   };
 
+  const handlePathNameSave = () => {
+    dispatch(setPathName(pathNameInput));
+    setOpen(!isOpen);
+  };
+
   return (
     <div className={styles.Background}>
       <main className={styles.PathEditorPage}>
+        {isOpen ? (
+          <div>
+            <label htmlFor="path-name">
+              <input type="text" id="path-name" value={pathNameInput} onChange={(e) => setPathNameInput(e.target.value)} />
+              <button type="button" onClick={handlePathNameSave}>
+                Save
+              </button>
+            </label>
+          </div>
+        ) : (
+          <h3 onClick={() => setOpen(!isOpen)}>{pathName || '<Path Name>'}</h3>
+        )}
         <ul className={styles.PathEditor}>
-          {chosenCollections.length > 0
-            && chosenCollections.map(({ title }, i) => <Item key={title} i={i} name={title} setPosition={setPosition} moveItem={moveItem} />)}
+          {chosenCollections.length > 0 &&
+            chosenCollections.map(({ title }, i) => <Item key={title} i={i} name={title} setPosition={setPosition} moveItem={moveItem} />)}
         </ul>
         <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
           Add

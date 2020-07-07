@@ -24,6 +24,7 @@
 }
 
 .Link {
+  background-color: transparent;
   position: relative;
   border-radius: 10px;
   color: var(--pink-primary);

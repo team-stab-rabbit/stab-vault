@@ -12,3 +12,8 @@ export const setCollections = (collection) => ({
   type: 'set',
   payload: collection,
 });
+
+export const setPathName = (pathName) => ({
+  type: 'setPathName',
+  payload: pathName,
+});

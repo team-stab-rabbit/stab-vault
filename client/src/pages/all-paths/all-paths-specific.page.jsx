@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import LearningPath from '../../components/collections/collection/collection.component';
+import LearningPath from '../../components/learning-paths/learning-path/learning-path.component';
 
-import styles from './all-paths-specific.style.css'
+import styles from './all-paths-specific.style.css';
 
 const AllLearningPaths = ({ loggedInUser, userCollections }) => {
   const [collections, setCollections] = useState([]);
-
 
   useEffect(() => {
     // Get all collections
@@ -19,26 +18,17 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
       });
   }, []);
 
-
   return (
     <div className={styles.Background}>
-        <main className={styles.Main}>
+      <main className={styles.Main}>
         <h1 className={styles.Heading}>All Learning Paths</h1>
-                {collections[0] !== undefined ? (
-                collections.map((collection) => (
-                <LearningPath
-                    key={collection._id}
-                    id={collection._id}
-                    {...collection}
-                    loggedInUser={loggedInUser}
-                />
-                ))
-                ) : (
-                    <li> Loading...</li>
-                )}
-        </main>
+        {collections[0] !== undefined ? (
+          collections.map((collection) => <LearningPath key={collection._id} id={collection._id} {...collection} loggedInUser={loggedInUser} />)
+        ) : (
+          <li> Loading...</li>
+        )}
+      </main>
     </div>
-
   );
 };
 
