@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import LikeButton from '../like-button/like-button.component';
 import SaveButton from '../save-button/save-button.component';
 
-import './expanded-collection.style.css';
+import './expanded-learning-path.style.css';
 
 const ExpandedLearningPath = ({ loggedInUser }) => {
   const [collection, setCollection] = useState([]);
@@ -12,9 +12,10 @@ const ExpandedLearningPath = ({ loggedInUser }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/api/collections/${id}`)
+    fetch(`/api/userpaths/${id}`)
       .then((res) => res.json())
       .then((result) => {
+        console.log('RESULT', result);
         setCollection(result);
       });
   }, []);

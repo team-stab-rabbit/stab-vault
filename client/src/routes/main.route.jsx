@@ -16,8 +16,8 @@ import WithAuth from './with-auth.route';
 
 import Nav from '../components/nav/nav.component';
 import AllLearningPaths from '../pages/all-learning-paths/all-learning-paths.page';
-import ExpandedLearningPath from '../components/collections/expanded-collection/expanded-collection.component';
-import SavedCollections from '../components/collections/saved-collections/saved-collections.component';
+import ExpandedLearningPath from '../components/learning-paths/expanded-learning-path/expanded-learning-path.component';
+import SavedCollections from '../components/learning-paths/saved-collections/saved-collections.component';
 import AddCollectionView from '../pages/path-editor-add-collection/path-editor-add-collection.page';
 import pathEditorReducer, { defaultState as pathEditorDefaultState } from '../reducers/path-editor';
 import PathEditorContext from '../contexts/path-editor-context';
@@ -25,7 +25,7 @@ import PathEditorContext from '../contexts/path-editor-context';
 const Main = () => {
   const [loggedInUser, setLoggedInUser] = useState('');
 
-  const [chosenCollections, collectionDispatch] = useReducer(pathEditorReducer, pathEditorDefaultState);
+  const [pathEditorState, collectionDispatch] = useReducer(pathEditorReducer, pathEditorDefaultState);
 
   useEffect(() => {
     fetch('/api/checkToken')
@@ -36,7 +36,8 @@ const Main = () => {
     <PathEditorContext.Provider
       value={{
         dispatch: collectionDispatch,
-        chosenCollections,
+        chosenCollections: pathEditorState.chosenCollections,
+        pathName: pathEditorState.pathName,
       }}
     >
       <Router>
@@ -61,11 +62,11 @@ const Main = () => {
             </Route>
 
             {/* change url to fetch learning path */}
-            <Route path="/collections/user/:userId">
-              <AllLearningPaths userCollections loggedInUser={loggedInUser} />
+            <Route path="/userpaths/user/:userId">
+              <AllLearningPaths userPaths loggedInUser={loggedInUser} />
             </Route>
             {/* change url to fetch learning path */}
-            <Route path="/collections/:id">
+            <Route path="/userpaths/:id">
               <ExpandedLearningPath loggedInUser={loggedInUser} />
             </Route>
 

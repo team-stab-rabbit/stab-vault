@@ -6,7 +6,7 @@ import SaveButton from '../save-button/save-button.component';
 
 import styles from './collection.style.css';
 
-const LearningPath = ({id, title, name, description, author, loggedInUse} ) =>  (
+const LearningPath = ({ id, title, name, description, author, loggedInUser }) => (
   <div key={id} className={styles.Card}>
     <h1 className={styles.Title}>{name}</h1>
     {/* <h3>{description}</h3> */}
@@ -36,6 +36,6 @@ const LearningPath = ({id, title, name, description, author, loggedInUse} ) =>  
       </div>
     )} */}
   </div>
-  )
+);
 
 export default LearningPath;
