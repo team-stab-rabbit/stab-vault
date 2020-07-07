@@ -12,13 +12,19 @@ const Nav = ({ loggedInUser, setLoggedInUser }) => (
       {!loggedInUser && (
         <>
           <Link to="/">
-            <button type="button" className={`${styles.NavBtn} ${styles.NavBtnHome}`}>
+            <button type="button" className={`${styles.NavLink} ${styles.NavBtnHome}`}>
+              <span data-content="Home" />
+              {'\u00A0\u00A0\u00A0'}
               Home
+              {'\u00A0\u00A0\u00A0'}
             </button>
           </Link>
           <Link to="/register">
-            <button type="button" className={`${styles.NavBtn} ${styles.NavBtnSignUp}`}>
+            <button type="button" className={`${styles.NavLink} ${styles.NavBtnSignUp}`}>
+              <span data-content="Sign Up" />
+              {'\u00A0\u00A0\u00A0'}
               Sign Up
+              {'\u00A0\u00A0\u00A0'}
             </button>
           </Link>
           <Link to="/login">
