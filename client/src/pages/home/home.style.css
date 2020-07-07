@@ -37,11 +37,13 @@
 
 .Link:hover span {
   transform: translateX(0);
+  border-radius: 1rem;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .Link span::before {
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 1rem;
   content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
   background-color: var(--pink-primary);
   color: var(--white);
@@ -61,6 +63,10 @@
   left: 50vw;
   transform: translate(-50%, -50%);
   width: 100vw;
+}
+
+button {
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 600px) {
