@@ -2,8 +2,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import { useHistory } from 'react-router-dom';
-import animations from './animation.data'
-
+import animations from './animation.data';
 
 const Animation = ({ animationName, play = true, link = null }) => {
   const history = useHistory();
@@ -31,7 +30,7 @@ const Animation = ({ animationName, play = true, link = null }) => {
     }, animation.time);
   }
 
-  return <Lottie options={options} isClickToPauseDisabled />;
+  return <Lottie options={options} isClickToPauseDisabled isStopped={!play} />;
 };
 
 export default Animation;
