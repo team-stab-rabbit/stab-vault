@@ -61,8 +61,6 @@ const Home = ({ loggedInUser }) => {
     setAnimation(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />)
   }
 
-  console.log(loggedStateChanged)
-  console.log(loggedInUser)
 
   return (
     <>
