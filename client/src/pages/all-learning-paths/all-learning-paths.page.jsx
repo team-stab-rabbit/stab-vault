@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import LearningPath from '../../components/collections/collection/collection.component';
+import LearningPath from '../../components/learning-paths/learning-path/learning-path.component';
 
-const AllLearningPaths = ({ loggedInUser, userCollections }) => {
-  const [collections, setCollections] = useState([]);
+const AllLearningPaths = ({ loggedInUser, userPaths }) => {
+  const [learningPaths, setLearningPaths] = useState([]);
   const [searchText, setSearchText] = useState('');
   const { userId } = useParams();
 
   // transform likes to number
-  const transformLikes = (colls) => colls.map((collection) => ({
-    ...collection,
-    likes: collection.likes.length,
-  }));
+  const transformLikes = (lPaths) =>
+    lPaths.map((learningPath) => ({
+      ...learningPath,
+      likes: learningPath.likes.length,
+    }));
 
   const sortByLikes = (a, b) => {
     if (a.likes > b.likes) {
@@ -25,23 +26,23 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
   };
 
   useEffect(() => {
-    // Check if we are trying to get all collections for a specific user
-    if (userCollections) {
-      fetch('/api/userpaths')
+    // Check if we are trying to get all learning paths for a specific user
+    if (userPaths) {
+      fetch(`/api/userpaths/${userId}`)
         .then((res) => res.json())
         .then((result) => {
-          setCollections(transformLikes(result));
+          setLearningPaths(transformLikes(result));
         });
 
       return;
     }
-    // Otherwise just get all collections
+    // Otherwise just get all learning paths
     fetch('/api/userpaths')
       .then((res) => res.json())
       .then((result) => {
         // assume result is an array
         // transformLikes -> sort by like by default
-        setCollections(transformLikes(result));
+        setLearningPaths(transformLikes(result));
       });
   }, [userId]);
 
@@ -52,18 +53,17 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
   };
 
   const handleFilterChange = (e) => {
-    const collectionCopy = [...collections];
+    const learningPathsCopy = [...learningPaths];
     switch (e.target.value) {
       case 'saved':
         // TODO: decide what to do with "saved" filter
         break;
       default:
-        setCollections(collectionCopy.sort(sortByLikes));
+        setLearningPaths(learningPathsCopy.sort(sortByLikes));
     }
   };
 
-  const collectionsToRender = collections.filter((collection) => {
-    console.log('collection', collection);
+  const learningPathsToRender = learningPaths.filter((collection) => {
     if (collection.tags.length > 0) {
       for (let i = 0; i < collection.tags.length; i += 1) {
         if (collection.tags[i].toLowerCase().includes(searchText)) {
@@ -76,7 +76,7 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
 
   return (
     <div>
-      <h1>{userCollections ? `${userId}'s Learning Paths` : 'All Learning Paths'}</h1>
+      <h1>{userPaths ? `${userId}'s Learning Paths` : 'All Learning Paths'}</h1>
 
       <div>
         <label htmlFor="search-input">
@@ -99,14 +99,14 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
         </label>
       </div>
 
-      {collectionsToRender[0] !== undefined ? (
-        collectionsToRender.map((collection) => (
+      {learningPathsToRender[0] !== undefined ? (
+        learningPathsToRender.map((learningPath) => (
           <LearningPath
-            key={collection._id}
-            id={collection._id}
-            title={collection.title}
-            description={collection.description}
-            author={collection.author}
+            key={learningPath._id}
+            id={learningPath._id}
+            title={learningPath.name}
+            description={learningPath.description}
+            author={learningPath.author}
             loggedInUser={loggedInUser}
           />
         ))
