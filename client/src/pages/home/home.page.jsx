@@ -6,7 +6,6 @@ import Mountains from '../../components/mountains/mountains.component';
 
 import styles from './home.style.css';
 
-
 const LoggedIn = (setAnimation) => (
   <>
     <Link className={styles.Link} to="/my-paths">
@@ -37,30 +36,29 @@ const LoggedIn = (setAnimation) => (
 
 const NotLoggedIn = (setAnimation) => (
   <>
-    <button className={styles.Link} onClick={() => setAnimation(<Animation animationName="notLoggedInAllPaths" link="/all-paths" />)}>
+    <button type="button" className={styles.Link} onClick={() => setAnimation(<Animation animationName="notLoggedInAllPaths" link="/all-paths" />)}>
       <span data-content="See paths" />
       {'\u00A0\u00A0\u00A0'}
       See paths
       {'\u00A0\u00A0\u00A0'}
     </button>
-    <button type="button" className={styles.Link} >
+    <Link type="button" className={styles.Link} to="/login">
       <span data-content="Forge own path" />
       {'\u00A0\u00A0\u00A0'}
       Forge own path
       {'\u00A0\u00A0\u00A0'}
-    </button>
+    </Link>
   </>
 );
 
 const Home = ({ loggedInUser }) => {
   const [animation, setAnimation] = useState(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />);
-  const loggedStateChanged = useRef(loggedInUser)
+  const loggedStateChanged = useRef(loggedInUser);
 
-  if(loggedStateChanged.current !== loggedInUser) {
-    loggedStateChanged.current = loggedInUser
-    setAnimation(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />)
+  if (loggedStateChanged.current !== loggedInUser) {
+    loggedStateChanged.current = loggedInUser;
+    setAnimation(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />);
   }
-
 
   return (
     <>
