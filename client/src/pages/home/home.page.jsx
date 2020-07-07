@@ -42,12 +42,12 @@ const NotLoggedIn = (setAnimation) => (
       See paths
       {'\u00A0\u00A0\u00A0'}
     </button>
-    <button type="button" className={styles.Link}>
+    <Link type="button" className={styles.Link} to="/login">
       <span data-content="Forge own path" />
       {'\u00A0\u00A0\u00A0'}
       Forge own path
       {'\u00A0\u00A0\u00A0'}
-    </button>
+    </Link>
   </>
 );
 
