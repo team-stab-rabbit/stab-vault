@@ -74,7 +74,6 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
     return collection.description.toLowerCase().includes(searchText);
   });
 
-  console.log(collections)
   return (
     <div>
       <h1>{userCollections ? `${userId}'s Learning Paths` : 'All Learning Paths'}</h1>
