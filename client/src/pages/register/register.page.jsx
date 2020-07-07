@@ -101,7 +101,6 @@ const register = ({ setLoggedInUser }) => {
     });
 
     const data = await response.json();
-    console.log(data);
 
     // Email already exists
     if (data.emailAlreadyExists) {
