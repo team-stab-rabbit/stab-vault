@@ -6,6 +6,7 @@ import SaveButton from '../save-button/save-button.component';
 
 import styles from './learning-path.style.css';
 
+
 const LearningPath = ({ id, title, name, description, author, loggedInUser }) => (
   <div key={id} className={styles.Card}>
     <h1 className={styles.Title}>{name}</h1>
