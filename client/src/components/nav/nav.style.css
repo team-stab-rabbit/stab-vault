@@ -10,11 +10,14 @@ header {
 button {
   border: none;
   outline: none;
+  background-color: none;
+  font-weight: bold;
 }
 
 .Nav {
   display: flex;
   padding-right: 1.6rem;
+  align-items: center;
 }
 
 .NavBtn {
@@ -61,14 +64,15 @@ span {
 
 .NavLink {
   position: relative;
-  border-radius: 10px;
+  border-radius: 1rem;
   color: var(--white);
   background-color: transparent;
   font-size: 1.6rem;
-  font-weight: normal;
+  line-height: 3rem;
+  font-weight: bold;
   text-decoration: none;
   overflow: hidden;
-  padding: 1rem 1.6rem;
+  padding: 1rem 1rem;
 }
 
 .NavLink:hover span {
@@ -77,7 +81,7 @@ span {
 
 .NavLink span::before {
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 1rem;
   content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
   background-color: var(--pink-primary);
   color: var(--white);
