@@ -24,6 +24,7 @@
 }
 
 .Link {
+  background-color: transparent;
   position: relative;
   border-radius: 10px;
   color: var(--pink-primary);
@@ -63,10 +64,6 @@
   left: 50vw;
   transform: translate(-50%, -50%);
   width: 100vw;
-}
-
-button {
-  background-color: transparent;
 }
 
 @media only screen and (max-width: 600px) {
