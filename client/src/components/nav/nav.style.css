@@ -3,6 +3,7 @@ header {
   display: flex;
   flex-direction: row-reverse;
   background-color: var(--gray);
+  min-height: 7.8rem;
 }
 
 button {
@@ -21,6 +22,16 @@ button {
   color: var(--white);
   cursor: pointer;
   background: transparent;
+}
+
+.NavBtnSignUp {
+  border: none;
+  margin-right: 2rem;
+}
+
+.NavBtnHome {
+  border: none;
+  margin-right: 1rem;
 }
 
 /* Fix after designed */

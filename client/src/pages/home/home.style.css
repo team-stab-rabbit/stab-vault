@@ -1,16 +1,25 @@
-.HomeContainer {
-  display: flex;
+.Background {
   background-color: var(--white);
+  z-index: -1;
+  position: fixed;
+}
+
+.HomeContainer {
+  position: fixed;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  min-height: calc(100vh - 7.8rem);
+  top: 12rem;
+  height: calc(100vh - 12rem);
+  width: 100vw;
+  z-index: 1;
 }
 
-span {
+.Link > span {
   position: absolute;
   overflow: hidden;
-  transform: translateX(-100%);
+  transform: translateX(-110%);
   transition: transform 275ms ease;
 }
 
@@ -23,6 +32,7 @@ span {
   text-decoration: none;
   overflow: hidden;
   line-height: 6rem;
+  cursor: pointer;
 }
 
 .Link:hover span {
@@ -35,10 +45,33 @@ span {
   content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
   background-color: var(--pink-primary);
   color: var(--white);
-  transform: translateX(100%);
+  transform: translateX(110%);
   transition: transform 275ms ease;
 }
 
 .Link:hover span::before {
   transform: translateX(0);
+}
+
+.Animation {
+  position: fixed;
+  height: 90vh;
+  z-index: -1;
+  top: 56vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .Animation {
+    width: 100vw;
+    top: calc(58vh);
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .Animation {
+    width: 1920px;
+  }
 }
