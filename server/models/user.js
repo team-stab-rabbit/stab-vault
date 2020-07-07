@@ -11,11 +11,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  savedcollections: [{ type: String }],
-  userPaths: {
-    type: Array,
-    required: false,
-  },
+  savedPaths: [{ type: Schema.Types.ObjectId, ref: 'Userpath' }],
+  userCreatedPaths: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Userpath',
+      required: false,
+    },
+  ],
 });
 
 module.exports = mongoose.model('User', userSchema);
