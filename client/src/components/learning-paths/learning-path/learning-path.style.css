@@ -1,0 +1,19 @@
+.collection {
+  box-shadow: 1px 2px 2px 1px hsl(0, 0%, 70%);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.collection__title {
+  margin-top: 0;
+}
+
+.collection__button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  background: dodgerblue;
+  color: white;
+}
