@@ -1,58 +1,76 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import DriveAnimation from '../../components/drive-animation/drive-animation.component';
+import Animation from '../../components/animation/animation.component';
 import Mountains from '../../components/mountains/mountains.component';
 
 import styles from './home.style.css';
 
-// TODO: Add current path the loggedInUser and display as text
-// TODO: Need current path to pass to travel
-const LoggedIn = (loggedInUser) => (
+
+const LoggedIn = (setAnimation) => (
   <>
-    <Link to="/path-viewer">
-      Travel
-      {loggedInUser}
-      path
+    <Link className={styles.Link} to="/my-paths">
+      <span data-content="My paths" />
+      {'\u00A0\u00A0\u00A0'}
+      My paths
+      {'\u00A0\u00A0\u00A0'}
     </Link>
-    <Link to="/my-paths">My paths</Link>
-    <Link to="/all-paths">All paths</Link>
-    <Link to="/discover">Discover new path</Link>
-    <Link to="/path-editor">Forge new path</Link>
+    <button
+      type="button"
+      className={styles.Link}
+      to="/all-paths"
+      onClick={() => setAnimation(<Animation animationName="loggedInAllPaths" link="/all-paths" />)}
+    >
+      <span data-content="All paths" />
+      {'\u00A0\u00A0\u00A0'}
+      All paths
+      {'\u00A0\u00A0\u00A0'}
+    </button>
+    <button type="button" className={styles.Link} onClick={() => setAnimation(<Animation animationName="loggedInForge" link="/path-editor" />)}>
+      <span data-content="Forge new path" />
+      {'\u00A0\u00A0\u00A0'}
+      Forge new path
+      {'\u00A0\u00A0\u00A0'}
+    </button>
   </>
 );
 
-const NotLoggedIn = () => (
+const NotLoggedIn = (setAnimation) => (
   <>
-    <Link className={styles.Link} to="/all-paths">
+    <button className={styles.Link} onClick={() => setAnimation(<Animation animationName="notLoggedInAllPaths" link="/all-paths" />)}>
       <span data-content="See paths" />
       {'\u00A0\u00A0\u00A0'}
       See paths
       {'\u00A0\u00A0\u00A0'}
-    </Link>
-    <Link className={styles.Link} to="/discover">
-      <span data-content="Discover your path" />
-      {'\u00A0\u00A0\u00A0'}
-      Discover your path
-      {'\u00A0\u00A0\u00A0'}
-    </Link>
-    <Link className={styles.Link} to="/path-editor">
+    </button>
+    <button type="button" className={styles.Link} >
       <span data-content="Forge own path" />
       {'\u00A0\u00A0\u00A0'}
       Forge own path
       {'\u00A0\u00A0\u00A0'}
-    </Link>
+    </button>
   </>
 );
 
-const Home = ({ loggedInUser }) => (
-  <>
-    <div className={styles.Background}>
-      <div className={styles.HomeContainer}>{loggedInUser ? LoggedIn(loggedInUser) : NotLoggedIn()}</div>
-      <DriveAnimation />
-      <Mountains />
-    </div>
-  </>
-);
+const Home = ({ loggedInUser }) => {
+  const [animation, setAnimation] = useState(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />);
+  const loggedStateChanged = useRef(loggedInUser)
+
+  if(loggedStateChanged.current !== loggedInUser) {
+    loggedStateChanged.current = loggedInUser
+    setAnimation(<Animation animationName={loggedInUser ? 'loggedInAllPaths' : 'notLoggedInAllPaths'} play={false} />)
+  }
+
+
+  return (
+    <>
+      <div className={styles.Background}>
+        <div className={styles.HomeContainer}>{loggedInUser ? LoggedIn(setAnimation) : NotLoggedIn(setAnimation)}</div>
+        <div className={styles.Animation}>{animation}</div>
+        <Mountains />
+      </div>
+    </>
+  );
+};
 
 export default Home;

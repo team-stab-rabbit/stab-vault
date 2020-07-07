@@ -1,5 +1,9 @@
-.PathEditorPage {
+.Background {
   background-color: var(--white);
+  z-index: -1;
+}
+.PathEditorPage {
+  z-index: 10;
   width: 100vw;
   height: calc(100vh - 7.8rem);
   overflow: hidden;
@@ -50,4 +54,13 @@
 .AddCollectionButton:hover {
   color: var(--white);
   background-color: var(--gray);
+}
+
+.Animation {
+  position: fixed;
+  z-index: 0;
+  height: 30rem;
+  bottom: 0;
+  left: 50vw;
+  transform: translate(-50%, 0);
 }

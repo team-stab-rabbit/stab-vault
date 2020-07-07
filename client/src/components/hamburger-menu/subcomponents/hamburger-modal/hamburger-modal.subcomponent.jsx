@@ -20,19 +20,26 @@ const Links = ( setLoggedInUser ) => {
 
   return ([
       <Link to="/"       className={styles.NavListItem}>
-        <div className={styles.IconPlaceholder} />
+        <div className={styles.IconPlaceholder}>
+          <i className="fa fa-home" aria-hidden="true"/>
+        </div>
         <div className={styles.TextPlaceholder}>Home</div>
       </Link>,
-      <Link to="/" className={styles.NavListItem}>
-        <div className={styles.IconPlaceholder} />
-        <div className={styles.TextPlaceholder}>My Settings</div>
+      <Link to="/my-paths" className={styles.NavListItem}>
+        <div className={styles.IconPlaceholder}>
+        <i className="fa fa-street-view" aria-hidden="true"/>
+        </div>
+        <div className={styles.TextPlaceholder}>My Paths</div>
       </Link>,
     <a
       type="button"
       onClick={logout}
       className={styles.NavListItem}
+      role="link"
     >
-      <div className={styles.IconPlaceholder}/>
+      <div className={styles.IconPlaceholder}>
+        <i className="fas fa-sign-out-alt" aria-hidden="true"/>
+      </div>
       <div className={styles.TextPlaceholder}>Logout</div>
     </a>
   ])

@@ -6,10 +6,12 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { motion, useMotionValue } from 'framer-motion';
 import move from 'array-move';
 import findIndex from './find-index';
-import styles from './path-editor.style.css';
 
 import PathEditorContext from '../../contexts/path-editor-context';
 import { setCollections } from '../../actions/path-editor';
+import Animation from '../../components/animation/animation.component';
+
+import styles from './path-editor.style.css';
 
 // --- reference only ---
 // const initialColors = [
@@ -150,7 +152,7 @@ const PathEditor = ({ userInfo }) => {
   };
 
   return (
-    <div>
+    <div className={styles.Background}>
       <main className={styles.PathEditorPage}>
         <ul className={styles.PathEditor}>
           {chosenCollections.length > 0
@@ -163,6 +165,9 @@ const PathEditor = ({ userInfo }) => {
           Save
         </button>
       </main>
+      <div className={styles.Animation}>
+        <Animation animationName="pathEditorIntro" />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,57 @@
+.Background {
+    background-color: var(--black);
+    height: calc(100vh - 7.8rem);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    width: 100vw;
+    z-index: 1;
+  }
+  
+  .Link > span {
+    position: absolute;
+    overflow: hidden;
+    transform: translateX(-110%);
+    transition: transform 275ms ease;
+  }
+  
+  .Link {
+    position: relative;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: transparent;
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    overflow: hidden;
+    line-height: 6rem;
+    cursor: pointer;
+  }
+  
+  .Link:hover span{
+    transform: translateX(0);
+  }
+  
+  .Link > span::before {
+    display: inline-block;
+    border-radius: 10px;
+    content: '\00a0\00a0\00a0'attr(data-content) '\00a0\00a0\00a0';
+    background-color: var(--pink-primary);
+    color: var(--white);
+    transform: translateX(110%);
+    transition: transform 275ms ease;
+  }
+  
+  .Link:hover span::before {
+    transform: translateX(0);
+  }

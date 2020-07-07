@@ -1,8 +1,0 @@
-.Animation {
-  position: fixed;
-  height: 90vh;
-  z-index: -1;
-  top: 56vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-}
