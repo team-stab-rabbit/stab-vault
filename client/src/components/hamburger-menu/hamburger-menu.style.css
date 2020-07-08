@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   width: 24rem;
+  z-index: 999;
 }
 
 .BackgroundContainer {
@@ -17,12 +18,10 @@
   box-shadow: var(--shadow-far);
 }
 
-
 .Point {
   pointer-events: auto;
 }
 
 .NoPoint {
   pointer-events: none;
-
 }
