@@ -35,30 +35,3 @@
   margin-left: 1.6rem;
   margin-top: 2.4rem;
 }
-
-.CollectionView, .CollectionHeader {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-}
-
-.CollectionView {
-  margin: 0 auto;
-}
-
-.CollectionHeader {
-  height: auto;
-  padding: 1rem;
-  margin: 0 auto;
-}
-
-.CollectionItem {
-  display: flex;
-  justify-content: center;
-  flex-flow: column nowrap;
-  border-radius: 1rem;
-  background-color: var(--black);
-  color: var(--white);
-  width: 90%;
-  margin: 1rem auto;
-}

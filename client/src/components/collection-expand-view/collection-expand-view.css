@@ -1,16 +1,33 @@
-.Container {
-  border-radius: 10px;
+.CollectionItem {
   display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  border-radius: 1rem;
   background-color: var(--black);
   color: var(--white);
-  cursor: pointer;
-  font-size: 2rem;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1.6rem;
-  padding: 1.6rem 1.6rem;
+  width: 90%;
+  margin: 1rem auto;
   min-width: 300px;
   max-width: 400px;
+}
+
+.CollectionView,
+.CollectionHeader {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding: 1.6rem 1.6rem;
+  cursor: pointer;
+}
+
+.CollectionView {
+  margin: 0 auto;
+}
+
+.CollectionHeader {
+  height: auto;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
 .Button {
