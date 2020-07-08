@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+import ExpandedPathView from '../../components/path-expand-view/path-expand-view.component';
 import LearningPath from '../../components/learning-paths/learning-path/learning-path.component';
 
 import styles from './all-paths-specific.style.css';
 
 const AllLearningPaths = ({ loggedInUser, userCollections }) => {
   const [collections, setCollections] = useState([]);
+  const [expanded, setExpanded] = useState(0);
 
   useEffect(() => {
     // Get all collections
@@ -23,7 +25,8 @@ const AllLearningPaths = ({ loggedInUser, userCollections }) => {
       <main className={styles.Main}>
         <h1 className={styles.Heading}>All Learning Paths</h1>
         {collections[0] !== undefined ? (
-          collections.map((collection) => <LearningPath key={collection._id} id={collection._id} {...collection} loggedInUser={loggedInUser} />)
+          // collections.map((collection) => <LearningPath key={collection._id} id={collection._id} {...collection} loggedInUser={loggedInUser} />)
+          collections.map((collection) => <ExpandedPathView key={collection._id} i={collection} expanded={expanded} setExpanded={setExpanded} />)
         ) : (
           <li> Loading...</li>
         )}
