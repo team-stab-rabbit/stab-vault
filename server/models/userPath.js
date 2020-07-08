@@ -15,8 +15,8 @@ const userPathSchema = new Schema({
     type: String,
     required: true,
   },
-  tags: [{ type: String }],
-  likes: [{ type: String }],
+  // tags: [{ type: String }],
+  // likes: [{ type: String }],
   collections: [{ type: Schema.Types.ObjectId, ref: 'Collection' }],
   // mainPath: {
   //   type: Boolean,

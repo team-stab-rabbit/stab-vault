@@ -19,16 +19,13 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const {
-      id, name, author, description, tags, likes, collections, mainPath, completed,
+      id, name, author, description, collections, completed,
     } = req.body;
     const userPathDetails = {};
     if (name) userPathDetails.name = name;
     if (author) userPathDetails.author = author;
     if (description) userPathDetails.description = description;
-    if (tags) userPathDetails.tags = tags;
-    if (likes) userPathDetails.likes = likes;
     if (collections) userPathDetails.collections = collections;
-    if (mainPath) userPathDetails.mainPath = mainPath;
     if (completed) userPathDetails.completed = completed;
     // create user path
     const userPath = new UserPath(userPathDetails);
