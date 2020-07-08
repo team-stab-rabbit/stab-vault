@@ -5,6 +5,7 @@ const express = require('express');
 
 const router = express.Router();
 const UserPath = require('../../models/userpath.js');
+const User = require('../../models/user');
 
 router.get('/', async (req, res) => {
   try {
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const {
-      name, author, description, tags, likes, collections, mainPath, completed,
+      id, name, author, description, tags, likes, collections, mainPath, completed,
     } = req.body;
     const userPathDetails = {};
     if (name) userPathDetails.name = name;
@@ -29,8 +30,14 @@ router.post('/', async (req, res) => {
     if (collections) userPathDetails.collections = collections;
     if (mainPath) userPathDetails.mainPath = mainPath;
     if (completed) userPathDetails.completed = completed;
+    // create user path
     const userPath = new UserPath(userPathDetails);
     await userPath.save();
+    // find the who sent this request and add the above userpath in.
+    const user = await User.findById(id).exec();
+    user.userCreatedPaths.push(user._id);
+    user.save();
+
     res.json(userPath);
   } catch (err) {
     res.status(500).send(`Server error: ${err._message}`);

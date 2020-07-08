@@ -51,13 +51,12 @@ const AddCollectionView = () => {
   // nested loop, optimize later?
   const collectionsRender = collectionsByCategory
     && Object.keys(collectionsByCategory).map((category) => (
-      <>
+      <div key={category}>
         <div className={styles.CategoryText}>{category}</div>
         <hr />
         {collectionsByCategory[category].map((collection) => (
-          <div className={styles.CollectionView}>
+          <div key={collection.title + collection.category} className={styles.CollectionView}>
             <ExpandedCollectionView
-              key={collection.title + collection.category}
               title={collection.title}
               category={collection.category}
               description={collection.description}
@@ -65,7 +64,7 @@ const AddCollectionView = () => {
             />
           </div>
         ))}
-      </>
+      </div>
     ));
 
   return (

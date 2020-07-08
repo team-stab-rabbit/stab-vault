@@ -29,18 +29,17 @@ const ExpandedCollectionView = ({ collectionID, title, category, description }) 
   };
 
   return (
-    <div className={styles.Container}>
+    <div tabIndex={0} role="button" onClick={handleContainerClick} className={styles.Container}>
       {expanded ? (
         <>
-          <h3 onClick={handleContainerClick}>{title}</h3>
-          <h4>{category}</h4>
+          <h3>{title}</h3>
           <p>{description}</p>
           <button className={styles.Button} onClick={handleUse} type="button">
             Use
           </button>
         </>
       ) : (
-        <h3 onClick={handleContainerClick}>{title}</h3>
+        <h3>{title}</h3>
       )}
     </div>
   );
