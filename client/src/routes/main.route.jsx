@@ -45,7 +45,7 @@ const Main = () => {
         <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
         <main>
           <Switch>
-            <Route path="/testing">
+            <Route path="/all-paths">
               <AllPathsSpecific />
             </Route>
 
