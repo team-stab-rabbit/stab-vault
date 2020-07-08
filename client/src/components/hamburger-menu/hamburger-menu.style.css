@@ -16,3 +16,13 @@
   background: var(--white);
   box-shadow: var(--shadow-far);
 }
+
+
+.Point {
+  pointer-events: auto;
+}
+
+.NoPoint {
+  pointer-events: none;
+
+}
