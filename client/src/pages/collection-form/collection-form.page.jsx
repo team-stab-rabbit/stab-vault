@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { motion } from 'framer-motion';
+
 import styles from './collection-form.css';
 
 const CollectionForm = () => {
@@ -69,12 +71,12 @@ const CollectionForm = () => {
           <option value="devops">Dev Ops</option>
         </select>
         <div className={styles.BtnContainer}>
-          <button type="button" onClick={handleCancel} className={styles.CancelBtn}>
+        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}type="button" onClick={handleCancel} className={styles.CancelBtn}>
             Cancel
-          </button>
-          <button type="submit" className={styles.SubmitBtn}>
+          </motion.button>
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} type="submit" className={styles.SubmitBtn}>
             Create
-          </button>
+          </motion.button>
         </div>
       </form>
     </div>

@@ -16,11 +16,11 @@
 .PathEditor,
 .PathEditor li {
   list-style: none;
+  text-align: center;
 }
 
 .PathEditor {
   position: relative;
-  width: 25.6rem;
 }
 
 .PathEditor li {
@@ -38,6 +38,7 @@
   font-size: 2rem;
   color: var(--white);
   text-align: center;
+  font-weight: bold;
   padding: 1rem;
 }
 
@@ -69,4 +70,7 @@
 
 .Heading {
   margin: 2rem;
+  color: var(--black);
+  font-weight: bold;
+  font-size: 2rem;
 }

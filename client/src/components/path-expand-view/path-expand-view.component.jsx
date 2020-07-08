@@ -11,14 +11,13 @@ const ExpandedPathView = ({ i, expanded, setExpanded }) => {
   } = i;
 
   return (
-    <div className={styles.PathItem}>
+    <div className={styles.PathItem} onClick={() => setExpanded(isOpen ? false : i)}>
       <motion.header
-        className={styles.PathHeader}
+        className={isOpen ? styles.PathHeaderActive : styles.PathHeader }
         initial={false}
-        animate={{ backgroundColor: isOpen ? '#f5f7fa' : '#f5f7fa' }}
-        onClick={() => setExpanded(isOpen ? false : i)}
+        
       >
-        <h3>{name}</h3>
+        <h3 className={styles.Header}>{name}</h3>
       </motion.header>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -27,6 +26,7 @@ const ExpandedPathView = ({ i, expanded, setExpanded }) => {
             initial="collapsed"
             animate="open"
             exit="collapsed"
+            className={styles.Section}
             variants={{
               open: { opacity: 1, height: 'auto' },
               collapsed: { opacity: 0, height: 0 },
@@ -36,6 +36,9 @@ const ExpandedPathView = ({ i, expanded, setExpanded }) => {
             <motion.div transition={{ duration: 0.8 }} className={styles.PathView}>
               <p>{description}</p>
             </motion.div>
+            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={styles.Button}>
+              View
+            </motion.button>
           </motion.section>
         )}
       </AnimatePresence>
