@@ -67,7 +67,7 @@ const Item = ({ setPosition, moveItem, i, name }) => {
       initial={false}
       // If we're dragging, we want to set the zIndex of that item to be on top of the other items.
       animate={isDragging ? onTop : flat}
-      style={{ background: '#FF008C', height: 50 }} // background is of the Item
+      style={{ background: '#FF008C', height: 50, width: 300 }} // background is of the Item
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 1.12 }}
       drag="y"
@@ -172,7 +172,7 @@ const PathEditor = ({ userInfo }) => {
         )}
         <ul className={styles.PathEditor}>
           {chosenCollections.length > 0 &&
-            chosenCollections.map(({ title }, i) => <Item key={title} i={i} name={title} setPosition={setPosition} moveItem={moveItem} />)}
+            chosenCollections.map(({ title, id }, i) => <Item key={`${title}${id}`} i={i} name={title} setPosition={setPosition} moveItem={moveItem} />)}
         </ul>
         <button className={styles.AddCollectionButton} onClick={handleAdd} type="button">
           Add
