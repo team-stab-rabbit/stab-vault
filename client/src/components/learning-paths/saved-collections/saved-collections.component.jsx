@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import LearningPath from '../collection/collection.component';
+import LearningPath from '../learning-path/learning-path.component';
 
 const SavedCollections = ({ loggedInUser }) => {
   const [collections, setCollections] = useState([]);
@@ -18,14 +18,16 @@ const SavedCollections = ({ loggedInUser }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
-          data.map((id) => fetch(`/api/collections/${id}`)
-            .then((res) => res.json())
-            .then((result) => {
-              currentCollections.push(result);
-            })
-            .then(() => {
-              setCollections([...currentCollections]);
-            }));
+          data.map((id) =>
+            fetch(`/api/collections/${id}`)
+              .then((res) => res.json())
+              .then((result) => {
+                currentCollections.push(result);
+              })
+              .then(() => {
+                setCollections([...currentCollections]);
+              })
+          );
         }
       })
       .catch((error) => {
