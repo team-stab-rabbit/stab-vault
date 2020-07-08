@@ -10,6 +10,7 @@ import PathEditor from '../pages/path-editor/path-editor.page';
 import PathViewer from '../pages/path-viewer/path-viewer.page';
 import CollectionForm from '../pages/collection-form/collection-form.page';
 import Home from '../pages/home/home.page';
+import AllPaths from '../pages/all-paths/all-paths.page';
 import AllPathsSpecific from '../pages/all-paths/all-paths-specific.page';
 
 import WithAuth from './with-auth.route';
@@ -45,8 +46,12 @@ const Main = () => {
         <Nav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
         <main>
           <Switch>
-            <Route path="/all-paths">
+            <Route path="/all-paths-specific">
               <AllPathsSpecific />
+            </Route>
+
+            <Route path="/all-paths">
+              <AllPaths />
             </Route>
 
             <Route path="/register">

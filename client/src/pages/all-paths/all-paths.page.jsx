@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import styles from './all-paths.style.css'
 
@@ -15,13 +16,18 @@ const AllPaths = () => (
 
 )
 
-const HoverButton = ({name}) => (
-    <button className={styles.Link}>
+const HoverButton = ({name}) => {
+    const history = useHistory()
+    
+    return (
+        <button className={styles.Link} onClick={() => {history.push('/all-paths-specific')}}>
         <span data-content={name}/>
         {'\u00A0\u00A0\u00A0'}
         {name}
         {'\u00A0\u00A0\u00A0'}
     </button>
-)
+    )
+
+}
 
 export default AllPaths
