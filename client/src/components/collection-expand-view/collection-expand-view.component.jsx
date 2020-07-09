@@ -30,14 +30,13 @@ const ExpandedCollectionView = ({ i, expanded, setExpanded }) => {
   };
 
   return (
-    <div className={styles.CollectionItem}>
+    <div className={styles.CollectionItem}  onClick={() => setExpanded(isOpen ? false : i)}>
       <motion.header
         className={styles.CollectionHeader}
         initial={false}
         animate={{ backgroundColor: isOpen ? '#3F3D56' : '#3F3D56' }}
-        onClick={() => setExpanded(isOpen ? false : i)}
       >
-        <h3>{title}</h3>
+        <h3 className={styles.CollectionHeaderText}>{title}</h3>
       </motion.header>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -53,10 +52,11 @@ const ExpandedCollectionView = ({ i, expanded, setExpanded }) => {
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             <motion.div transition={{ duration: 0.8 }} className={styles.CollectionView}>
-              <p>{description}</p>
-              <button className={styles.Button} onClick={handleUse} type="button">
+              <p className={styles.CollectionViewCategoryText}>{category}</p>
+              <p className={styles.CollectionViewText}>{description}</p>
+              <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={styles.Button} onClick={handleUse} type="button">
                 Use
-              </button>
+              </motion.button>
             </motion.div>
           </motion.section>
         )}

@@ -35,9 +35,11 @@
 }
 
 .PathEditorName {
-  font-size: 2.4rem;
-  font-weight: 500;
+  font-size: 2rem;
   color: var(--white);
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem;
 }
 
 .AddCollectionButton {
@@ -64,4 +66,11 @@
   left: 50vw;
   transform: translate(-50%, 0);
   pointer-events: none;
+}
+
+.Heading {
+  margin: 2rem;
+  color: var(--black);
+  font-weight: bold;
+  font-size: 2rem;
 }

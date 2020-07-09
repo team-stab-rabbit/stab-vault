@@ -159,7 +159,7 @@ const PathEditor = ({ userInfo }) => {
     <div className={styles.Background}>
       <main className={styles.PathEditorPage}>
         {isOpen ? (
-          <div>
+          <div className={styles.Heading}>
             <label htmlFor="path-name">
               <input type="text" id="path-name" value={pathNameInput} onChange={(e) => setPathNameInput(e.target.value)} />
               <button type="button" onClick={handlePathNameSave}>
@@ -168,7 +168,7 @@ const PathEditor = ({ userInfo }) => {
             </label>
           </div>
         ) : (
-          <h3 onClick={() => setOpen(!isOpen)}>{pathName || '<Path Name>'}</h3>
+          <h3 className={styles.Heading} onClick={() => setOpen(!isOpen)}>{pathName || '<Path Name>'}</h3>
         )}
         <ul className={styles.PathEditor}>
           {chosenCollections.length > 0 &&

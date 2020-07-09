@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import styles from './register.style.css';
 
@@ -145,15 +146,18 @@ const register = ({ setLoggedInUser }) => {
   // ------
 
   return (
-    <div className={styles.Register}>
+    <div className={styles.Register} >
       <div className={styles.RegisterHeader}>
-        <h1>Register</h1>
+        <h1>Sign Up</h1>
         {error && (
-          <ul className={styles.FormError}>
+          <motion.ul className={styles.FormError}
+          animate={{ scale: [.9,1,.9,1,.9,1] }}
+          transition={{ duration: .5 }}
+          >
             {errorEmail && <li className={styles.FormErrorItem}>{errorEmail}</li>}
             {errorPassword && <li className={styles.FormErrorItem}>{errorPassword}</li>}
             {errorPasswordConfirm && <li className={styles.FormErrorItem}>{errorPasswordConfirm}</li>}
-          </ul>
+          </motion.ul>
         )}
       </div>
 

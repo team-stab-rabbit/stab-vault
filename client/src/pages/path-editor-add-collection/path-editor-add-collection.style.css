@@ -16,22 +16,58 @@
 
 .CancelButton {
   border-radius: 10px;
-  cursor: pointer;
+  color: var(--white);
+  background-color: transparent;
+  font-size: 1.6rem;
+  text-decoration: underline;
   font-weight: bold;
   padding: 1.6rem;
-  min-width: 160px;
+  cursor: pointer;
+  min-width: 16rem;
+}
+
+.CancelButton:hover {
+  transform: scale(1.2)
 }
 
 .AddButton {
   border-radius: 10px;
+  border: .2rem solid var(--white);
+  color: var(--white);
+  background-color: transparent;
   font-weight: bold;
+  font-size: 1.6rem;
   cursor: pointer;
-  min-width: 160px;
+  min-width: 12rem;
 }
+
+.AddButton:hover {
+  background-color: var(--white);
+  color: var(--black);
+
+} 
 
 .CategoryText {
   color: var(--white);
   font-size: 1.6rem;
-  margin-left: 1.6rem;
-  margin-top: 2.4rem;
+  margin: 3rem;
+}
+
+
+.CategoryText {
+  display: flex;
+  flex-direction: row;
+  text-transform: capitalize;
+}
+
+
+.CategoryText:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid var(--white);
+  margin: auto;
+}
+
+.CategoryText:after {
+  margin-left: 1rem;
 }

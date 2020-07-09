@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import ExpandedCollectionView from '../../components/collection-expand-view/collection-expand-view.component';
+import { motion } from 'framer-motion';
+
 import styles from './path-editor-add-collection.style.css';
 
 const AddCollectionView = () => {
@@ -54,7 +56,6 @@ const AddCollectionView = () => {
     && Object.keys(collectionsByCategory).map((category) => (
       <>
         <div className={styles.CategoryText}>{category}</div>
-        <hr />
         {collectionsByCategory[category].map((collection) => (
           <ExpandedCollectionView i={collection} expanded={expanded} setExpanded={setExpanded} />
         ))}
@@ -65,12 +66,12 @@ const AddCollectionView = () => {
     <div className={styles.AddCollectionPage}>
       {collectionsRender}
       <div className={styles.AddCollectionButtons}>
-        <button className={styles.CancelButton} type="button" onClick={handleCancel}>
+        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={styles.CancelButton} type="button" onClick={handleCancel}>
           Cancel
-        </button>
-        <button className={styles.AddButton} type="button" onClick={handleNew}>
+        </motion.button>
+        <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} className={styles.AddButton} type="button" onClick={handleNew}>
           New
-        </button>
+        </motion.button>
       </div>
     </div>
   );
